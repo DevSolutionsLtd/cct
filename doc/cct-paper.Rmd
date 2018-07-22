@@ -1,0 +1,366 @@
+---
+title: Evaluating the Operational Efficacy and Effectiveness of the SURE-P Maternal
+  and Child Health (MCH) Conditional Cash Transfer Pilot Programme in Nigeria
+output:
+  pdf_document: default
+  html_document: default
+bibliography: cct.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r load, message=FALSE}
+library(tidyverse)
+
+# define a function for plotting
+make_plot <-
+  function(var,
+           var2 = NULL,
+           title = character(),
+           set.x = NULL,
+           set.y = NULL,
+           pos = "stack",
+           col = 'purple') 
+  {
+    has.one.var <- is.null(var2)
+    df <- if (has.one.var)
+      drop_na(df, var)
+    else
+      drop_na(df, var, var2)
+    
+    ggObj <- ggplot(df, aes_string(var)) +
+      theme(legend.title =  element_blank(),
+            axis.ticks.x = element_blank(),
+            plot.title = element_text(size = 11))
+    
+    ggObj <- if (has.one.var) {
+      ggObj +
+        geom_bar(aes_string(fill = var)) +
+        theme(axis.text.x = element_blank())
+    }
+    else {
+      ggObj +
+        geom_bar(aes_string(fill = var2), position = pos) +
+        theme(axis.text.x = element_text())
+    }
+    
+    invisible(
+      ggObj +
+        labs(title = title, x = set.x, y = set.y)
+    )
+  }
+
+```
+
+## Abstract
+**Background**  
+This paper provides insights into the Subsidy Reinvestment and Empowerment Programme on Maternal and Child Health (SURE-P MCH) Conditional Cash Transfer (CCT) pilot programme in Nigeria as well as an evaluation of its operational processes.  
+
+**Objective**  
+The study assessed the SURE-P MCH CCT pilot programme operations from enrollment to pay-out processes, and illustrated a SWOT (strengths, weaknesses, opportunities and threats) analysis of the pilot programme. The study further identified key challenges and key recommendations to better inform future CCT designs and implementation in Nigeria.  
+
+**Methods**  
+A combination of desk review of SURE-P MCH CCT operational documentations and a retrospective cross-sectional field research were conducted from June – July 2015 in 18 CCT designated health facilities drawn from 37 participating health facilities. About 30-33 CCT beneficiaries participated from each state and the FCT, totaling 314 CCT primary beneficiaries, who were interviewed using a pre-tested interviewer administered questionnaire. Focus group discussions (FGDs) were conducted for ward development members and key informant interviews for PHC Officers-in-Charge (OICs).  
+
+**Results**  
+About 39.8% enrolled women received complete N5,000 cash incentive, 28.1% received only N1,000 with others receiving either N2000, N3000 or N4000. About 65.2% beneficiaries perceived CCT pay-out events as orderly and well-organised (p<.001). However, inconsistency and irregularity of CCT pay-out events resulted in large crowds during pay-out events which increased women’s waiting time to receive their cash disbursements.  
+
+**Conclusion**  
+The CCT pilot scheme motivated positive behavior change as beneficiaries embraced ante-natal care visits and facility deliveries which were evident in their fulfilment of the four set conditions. Majority of respondents expressed satisfaction with the CCT operational processes having found it easy from enrolment to pay-out events, they perceived the scheme as a successful government programme that should not be discontinued. However, several challenges inundated the scheme; from timely funds release to the SURE-P MCH PIU to operational challenges which marred CCT pay-out events. Future CCT programmes should understudy the SWOT analysis presented in this paper to improve future designs and implementation of CCT programs.  
+
+_**Key Words:** SURE-P MCH, Conditional Cash Transfer, Pilot programme, operational performance, efficiency and effectiveness_
+
+## Introduction
+The core concept of conditional cash transfer (CCT) schemes originated in Latin American countries in response to the macroeconomic crisis of the 1990s, when the demand for social services such as education and health declined drastically for poorer households [@vega]. Initially, CCT schemes were targeted to increase income and alleviate poverty in the short term as well as break intergenerational cycle of poverty by developing human capital (Parker et. al, 2017, Galiani, 2013). Consequently, Conditional Cash Transfer (CCT) programmes are being used to stimulate behavior change around social safety nets across many countries of the world since the 1990’s, with Mexico’s “Progresa” (now called Oportunidades) [@parker] and Brazil’s Bolsa Familia Programme (BFP) [@victora], staging as pioneers. These large scale government led programs used cash incentives based on certain pre-determined conditions to promote positive targeted health behaviours for their targets and have been overwhelmingly reported as effective in achieving desired outcomes [@roelen].
+
+The overwhelming evidence on the positive outcomes of CCT schemes around the world inspired the Federal Government of Nigeria to invest in the laudable programme from April 2013 to May 2015. This pilot programme known as the SURE-P MCH Conditional Cash Transfer (CCT) Scheme, with an annual budget of N100,000,000, was designed to incentivize qualified beneficiaries with pro-rated cash support of up to N5,000 per head after fulfilling a set of four co-responsibilities. The Federal Capital Territory (FCT) and 8 states - namely, Anambra, Bauchi, Bayelsa, Ebonyi, Kaduna, Niger, Ogun, and Zamfara - were purposively selected for the intervention. The programme targeted increasing utilization of health services to improve maternal and child health outcomes, rather than poverty reduction as emphasised by earlier CCT schemes [@okoli]. Thus, there were no restrictions of the CCT to women below a defined poverty line; rather, all pregnant women who enrolled for the programme in designated primary health centres were eligible to participate [@okoli]. The CCT programme was designed to increase demand for basic maternal, newborn and child health (MNCH) services by specifically targeting pregnant women to go through the full continuum of care, from antenatal through post-natal care.
+
+Cash support was provided to registered beneficiaries upon the fulfillment of set co-responsibilities along the continuum of MNCH services in designated SURE-P MCH primary health care centers to reduce the impact of economic barriers to access to health services (e.g. transportation to the PHC) [@cohen]. The CCT value of N5,000 or US$30 was determined by average estimates of costs incurred by pregnant women to access and utilize the facility according to survey findings conducted in 2012 during the proof-of-concept phase [@okoli]. As at December 2014, the programme had enrolled over 40,000 beneficiaries (pregnant women) and disbursed about N108,330,635.00 in the eight pilot states and the FCT. However, the SURE-P MCH CCT programme ended abruptly in May 2015 following a democratic transition to a new government and gains made by the project may have been reversed within a short time following the discontinuation of the scheme.
+
+Nearly all reviews on CCT schemes and their impact on health have predominantly featured evidence from Latin America with limited transferability to the social, cultural, and political environments in sub-Saharan Africa (Owusu-Addo et al. 2016). Overwhelming evidence have evaluated the impact of CCT schemes around the world with some contesting whether they actually alleviate poverty as intended or whether they are just there to promote positive behavioral change (@kusuma, @lagarde). However, studies that evaluate the operational efficacy and effectiveness of CCT schemes in low-resource settings are conspicuously lacking [@lagarde]. This paper therefore, presents an insight into the SURE-P MCH CCT programme in Nigeria while providing an evaluation of the operational efficacy and effectiveness of the scheme as well as beneficiaries' perception of the processes.  
+
+## Background of SURE-P MCH CCT Programme
+The partial removal of fuel subsidies in January 2012 by Nigeria’s government culminated in the establishment of the Subsidy Reinvestment and Empowerment Programme (SURE–P) to efficiently manage all financial resources accruable from the policy [@surep_main]. The Federal Government’s portion of the subsidy savings were invested in social safety net interventions as well as infrastructural and human development programmes to stimulate Nigeria’s economy and alleviate poverty. With a focus on accelerating progress on the fourth and fifth Millennium Development Goals, the Federal Government of Nigeria invested part of the subsidy savings in improving maternal and child survival nationwide through the SURE-P Maternal and Child Health (MCH) [@worldbank]. This component of the SURE-P was implemented through a programme management unit (PIU) with headquarters in Abuja under the National Primary Health Care Development Agency and premised upon the already existing Midwives Service Scheme (MSS) [@worldbank]. MSS facilitated the deployment and redistribution of midwives to selected primary healthcare centres across the country to increase access to quality maternal and child health services [@abimbola].  The SURE-P MCH expanded the benefits of MSS by focusing on supply and demand sides interventions while creating new strategies to reach the most vulnerable and underserved populations in Nigeria.
+
+The supply side interventions deployed midwives to designated facilities across Nigeria’s 36 states and the FCT, as well as strengthened the skills set of existing cadres of health staff [@abimbola].  MNCH medicines, consumables, equipment were supplied and infrastructural developments such as renovation of primary health centres and provision of bore holes to enhance access to potable water were made.
+
+One of the key demand creation interventions utilized was the conditional cash transfer (CCT) programme to complement the huge supply-side interventions [@ebenso]. The CCT pilot was implemented only in a selection of SURE‐P MCH facilities to assess whether the added incentive would have a significant impact on the utilization of ante-natal care services and facility-based delivery [@epiafric].
+
+
+## SURE-P MCH CCT PROGRAMME DESIGN
+As outlined above, following a successful six-month proof of concept phase in Kuje PHC and Karu PHC, both in the FCT, SURE-P MCH Conditional Cash Transfer (CCT) pilot programme was officially launched on May 13, 2013 at Deidei Comprehensive Health Centre Bwari, Bwari Area Council Abuja-FCT. The CCT Pilot Programme was implemented in the Federal Capital Territory (FCT) and 8 States across the six geopolitical zones namely: Anambra, Bauchi, Bayelsa, Ebonyi, Kaduna, Niger, Ogun, and Zamfara. A cluster model was used to select four (4) Primary Health Care (PHC) facilities per state with the exception of FCT which had five (5) PHC facilities making a total of 37 participating primary health care (PHC) facilities in 10 CCT clusters [@ghmc]. 
+
+**Programme Beneficiaries**  
+The primary beneficiaries of the CCT Programme were pregnant women who were enrolled at the designated SURE-P MCH CCT sites. However, secondary beneficiaries include their newborns, wider household (including existing children) as mothers contact with health services increased.
+
+**Eligibility and Cash Transfers**  
+All pregnant women whose pregnancy status were confirmed and booked in a participating facility and all pregnant women who are yet to benefit from the CCT program. The CCT Pilot programme incentivized beneficiaries with a total of N5000 cash support after fulfilling four set of co-responsibilities detailed as follows. 
+
+![Figure 1: SURE-P MCH CCT Co-Responsibilities and Benefits](fig/coresp.png)
+
+
+## SURE-P MCH CCT PILOT IMPLEMENTATION
+Implementation of the CCT Programme started with a two-week State Readiness Assessment (SRA) conducted across the FCT and eight (8) pilot States to:  
+
+1.	Create awareness and sensitize various stakeholders at the state, local government area (LGA) and ward levels on the SURE-P MCH CCT Programme and implementation plans.
+2.	Assess the readiness of participating primary health care (PHC) facilities and general hospitals (GH) to kick off with the intervention
+3.	Sensitize all PHC staff about the CCT Programme and their roles and responsibilities during the pilot phase
+4.	Evaluate the functionality of ward development committees (WDCs) in the pilot sites and, if necessary, commence the process of re-activating inactive WDCs and forming non-existent WDCs to improve their engagement during implementation.
+
+The SRAs prepared all stakeholders prior to commencement of the CCT programme in the states and upon completion, CCT personnel (one State CCT Technical Officer, one State CCT Field Supervisor and two State CCT Field Officers) were engaged and deployed to the FCT and eight (8) pilot states. To ensure strong stakeholder collaboration for the CCT Programme, a State Steering Committee (SSC) was inaugurated to guide the implementation of CCT programme activities within each State. The SSC membership comprised of Commissioners from State Ministry of Health, Ministry of Women Affairs, Ministry of Local Government and Chieftaincy Affairs, Traditional and Religious Leaders, State Director Primary Health Care, State MDGs Focal Person, MSS Focal Person, and SURE-P State CCT Technical Officer. As soon as CCT personnel were fully operational in their respective states, the State Steering Committees were constituted, followed by the launch of CCT in all 8 states and FCT in 2013.
+
+**Training of PHC Staff and orientation of WDC members on CCT Programme**  
+Prior to CCT enrollment and registration of beneficiaries, service providers (Midwives, CHEWs and VHWs) were trained while an orientation was conducted for WDC members of all designated PHCs. As soon as CCT reporting tools were deployed to all the States, registration and enrollment of pregnant women commenced. CCT programme tools includes: Beneficiary Registration Card, CCT Facility Registers, CCT Personal Consultation Forms and CCT Referral Forms. 
+
+**CCT pay–roll processes**  
+Prior to a CCT pay-out event, a pay-roll was generated using a spreadsheet containing list of eligible beneficiaries, their registration numbers and the amount of cash support they qualified for. The pay-roll containing the payment schedule of beneficiaries was usually pasted at the notice board of the health facility to notify eligible beneficiaries. The CCT technical staff would contact all qualified beneficiaries by telephone to inform them about the pay-out day and mobilize them for the event. They also sent information to the community through the village health workers, to let the women know the date for the cash disbursements. The pay-roll was used on pay-out day to invite beneficiaries for their cash disbursements. Prior to pay-out events, SSC, WDC and OICs of the health facilities were duly informed about the dates.
+
+**Pay-out events**  
+The CCT pay-out event was usually the climax of the CCT programme because that was the day beneficiaries received their cash disbursement It was usually a one-day event but with possible spill-over into the next day. Different stations manned by CCT technical staff were organised at the venue to allow benefiting women move in a chronological manner for accreditation and validation. Thereafter, the CCT beneficiary was directed to receive their cash support from bank cashiers present at the venues working with the support of CCT staff. When a woman received a total of N5000 cash support having fulfilled all four co-responsibilities, the CCT registration card was retrieved and archived. 
+
+
+## METHODS
+
+**Study Design**  
+A combination of a desk review of the SURE-P MCH CCT operational documents and participatory field research methodologies were used to elicit responses from study participants. The SURE-P MCH programme implementation manual (PIM) and several CCT monthly reports were obtained from the project management unit (PIU) and carefully reviewed and analyzed. For the field research, a descriptive cross-sectional and retrospective study was conducted from June – July 2015 across all 18 PHC facilities chosen from 10 CCT Pilot clusters using face-to-face personal interviews, key informant interviews and focus group discussions. Finally, a SWOT analysis was conducted to identify key challenges while offering key recommendations that may improve design and implementation of future CCT Programmes in Nigeria. The study was conducted in English but assessors translated to local language for participants where necessary. 
+
+**Sample Size**  
+The total population of CCT enrollees from 18 participating CCT pilot sites nationwide was used to compute the sample size using the R* statistical package. A total of 325 respondents were selected using a multi-stage sampling technique and 30-33 respondents were allotted to each CCT cluster in each state.
+
+**Sampling technique**  
+A two-stage sampling technique was utilized to select study participants. First, a list of all women enrolled in the pilot programme with their telephone contacts served as the sampling frame.  Then a table of random numbers was used to select each participant into the study. Randomly selected participants who could not be reached were replaced from the sampling frame after repeating the table of random numbers. For the FGDs, purposive sampling was used to select 6 participants for each of the two categories of FGDs with a representative sample of male and female.  
+
+
+
+
+**Study Population**  
+The study was conducted across 10 CCT clusters in the FCT and eight (8) States of Anambra, Bauchi, Bayelsa, Ebonyi, Kaduna, Niger, Ogun, and Zamfara with primary and secondary participants. Primary participants were pregnant women who enrolled in the CCT programme within the pilot period and received cash incentives for meeting any of the CCT co- responsibilities while, secondary participants included ward development committee members and service providers. A total of 314 CCT primary beneficiaries participated with a total of 30-33 CCT primary beneficiaries from each CCT cluster in the 8 participating states and the Federal Capital Territory (FCT). 18 Officer’s in Charge (OICs) of the 18 participating health facilities were interviewed as key informants. Midwives, CHEWs and VHWs were selected to participate in the focus group for service providers and WDC members participated in the focus group for community members.  
+
+![Figure 2- Map of CCT Pilot States depicting the sites surveyed](fig/pilot-sites_map.png)
+
+**Data collection tools**  
+Three data collection instruments were used to elicit information from respondents as follows: a structured questionnaire of (16) questions) for CCT primary beneficiaries, a semi-structured questionnaire for key informants and a semi - structured focus group discussion guide.  
+
+**Data collection process**  
+Data was collected between June-July 2015 (period when the CCT scheme had already ended) with the recruitment of Research Assessors who were trained on the assessment’s purpose, scope and objectives, interview process, administration of data collection instrument and conducting a focus group discussion. Demographic data was collected on sex, age, religion, ethnic group, marital status, educational status, employment status, number of children and number of pregnancy. A total of 314 personal interviews and 18 key informant interviews were conducted for Officers-in-Charge (OICs) of each CCT site. Two focus group discussions (FGDs) were conducted for members of the Ward Development Committees (WDCs) in participating communities and Health Service Providers (Midwives, CHEWs and VHWs) from participating health facilities respectively. 
+
+**Data management and analysis**  
+Each of the answered questionnaires was coded and entered into a spreadsheet. The data collected was subjected to descriptive (i.e. mean, median and mode) and inferential (i.e. Chi-square and ANOVA) statistical treatment. Bivariate analysis and test of statistical significance were carried out using R version 3.1.2. Finally information obtained was summarized and presented in tables, charts and frequencies.
+
+**Validity and reliability checks**  
+The data collection instruments was peer reviewed by internal and external colleagues to ensure internal consistency and validity. A pre-test of data instruments (questionnaires), survey methodology and data management was conducted in one of the non-participating CCT facilities and findings from the pre-test were incorporated accordingly. 
+
+**Ethical considerations** 
+The assessment was initiated and approved by SURE-P MCH management, the study protocol was approved by SURE-P MCH and United Nations Population Fund (UNFPA) Nigeria. Randomly selected participants were recruited strictly on their voluntary permission through written informed consent. The study information was carefully explained to participants using the participant’s information sheet which preceded the signing of the informed consent forms. Confidentiality of each participant was maintained during and after data collection as coded responses are held on secure computers only and not disclosed to anyone. 
+
+
+## RESULTS
+```{r load-data}
+df <- readRDS("../data/surveydata.rds")
+```
+
+**CCT Operations**  
+Beneficiaries were asked about how they learnt about the CCT Programme and 22.6% participants reported having heard about the programme from family and friends then locally established CCT structures in the health centre proved to be very prominent sources of information for the women as VHWs (43%),  CHEWs (18.2%) and WDCs (11.1%) (p < 0.001). The data also showed that the source of information varied significantly across the various pilot states (p < 0.001)
+
+```{r plot (cct info)}
+gg <- make_plot(
+  "cct.info",
+  title = "Figure 3: Where Beneficiaries first heard about CCT")
+print(gg)
+
+gg + facet_wrap( ~ state)
+
+
+```
+
+
+**Table 1: Pregnancy Stage at CCT Enrolment**  
+
+| Stage at Enrolment |  No. (%)      |
+|--------------------|---------------|
+|	1st Trimester      |	122 (40)	   |  
+| 2nd Trimester      |  163 (53.44)	 |             
+|	3rd Trimester	     |   19 (6.23)	 |    
+|	At Delivery        |    1 (.33)    |
+
+Most beneficiaries were enrolled in the pilot within the first 2 trimesters of their pregnancies (93%), adequate information on their co-responsibilities was given to them at enrolment and they generally attested to the regularity of their CCT records (see Figures 4 and 5). 
+
+```{r}
+print(make_plot(
+  "info.coresp",
+  title = "Figure 4: Adequate information on Co-responsibilities given"))
+```
+
+
+
+```{r}
+print(make_plot(
+  "same.record",
+  title = "Figure 5: Record on CCT card same as that in Register"))
+```
+  
+
+Eighty six percent (86%) of respondents stated that they had no complaints about the programme at enrolment while majority of the women (88.7%) reported finding the CCT process to be easy – from enrolment to pay-out.
+
+```{r complaints}
+print(make_plot(
+  "complaints",
+  title = "Figure 6: Complaints on CCT Enrolment"))
+``` 
+  
+
+**CCT Pay-roll and payout events**
+
+```{r process}
+print(make_plot(
+  "cct.process",
+  title = "Figure 7: Perception on CCT Process"))
+```
+
+  
+Local health system structures played a more prominent role in disseminating information on Pay-Out Events with the women being mostly informed via the health facility (34.2%), VHW/CHEW (21.1%) and WDC (9.1%). Significantly, the phone calls from SURE-P CCT were prominent sources of information, according to about 12.1% of the respondents. 95% of the respondents said that the information they received was timely, while 84.8% said that the pay-outs were held as scheduled. In Niger State, most of them complained that the Pay-Out Events did not hold as scheduled.
+
+**Table 2: How Beneficiaries Heard About Pay-Out Events**
+
+| Source              	| No. (%)    |
+|-----------------------|------------|
+| From PHC              |	102 (34.2) |
+| VHW/CHEW  	          |  63 (21.1) |
+| Phone Call   	        |  36 (12.1) |
+| WDC/Community Leaders |	 27 (9.1)  |
+| Community members 	  |  13 (4.4)  |
+| Text messages         |	 10 (3.4)  |
+| Mosque/Church	        |   8 (2.7)  |
+| Not informed 	        |  39 (13.1) |
+
+```{r}
+print(make_plot(
+  "state",
+  "payout.onschedule",
+  "Figure 8: Were Pay-Outs According To Schedule?"))
+```
+  
+Most of the women said that they were paid the complete N5,000 incentive (39.8%), followed by those who received only N1,000 (28.1%). Most of the respondents who received the incentive were paid in a single instalment (Fig. 24). 
+
+```{r}
+print(make_plot(
+  "amount.received",
+  title = "Figure 9: Amount Paid To Beneficiaries"))
+```
+  
+There was a statistically significant variation (p < 0.001) amongst the CCT Pilot States of the amount received by the beneficiaries; the highest proportion of those that collected N5,000.00 were from FCT (30.4%) while 38.4% of those that collected only N1,000.00, were from Niger State. It should be noted that the CCT Pilot Programme started in the FCT several months before the other States.
+
+Figure 10: Amount Paid Out Vs. Payments Made Per Beneficiary
+
+```{r numpayments}
+print(make_plot("no.of.payments",
+          title = "Figure 10: No. of payments"))
+## TODO: This would make more sense for the "once" and perhaps the "twice" categories. We would want to know whether lump sum payment was common.
+```
+
+
+There was a statistically significant variation (p < 0.001) amongst Pilot States of the amount received by the beneficiaries; the highest number of those that collected N5,000.00 were from FCT, followed by Ogun State. Of the beneficiaries that collected only N1,000.00, most of them were in Niger State (Figure 11).  
+
+```{r}
+gg <- make_plot("amount.received",
+          title = "Figure 11: Amount Received Across the Pilot States")
+
+gg + facet_wrap( ~ state)
+## TODO: Chart as multifaceted plot
+```
+
+ 
+Out of the CCT enrollees that were not given any money, about an equal number were or were not given any reasons why they were not paid (50.7% and 49.3%, respectively). When analysed on a State-by-State basis, 90%, 75% and 53% of the respondents in Bauchi, FCT and Kaduna Pilot States, respectively, said they were not given any reasons for non-payment. In contrast, beneficiaries from Zamfara, Ebonyi and Anambra Pilot States scored CCT high (83.3%, 80% and 60%) in conveying to them any reason for their non-payment (Fig. 12) 
+
+
+```{r}
+gg <- make_plot(
+  "reason.given",
+  title = "Figure 12: Beneficiaries' Given Reasons for Non-Payment")
+
+gg + facet_wrap( ~ state)
+
+## TODO: Disaggregate according to pilot state
+```
+
+  
+Pay-out events were largely perceived by the beneficiaries to be orderly and well-organised (65.2%, p<.001); most complaints about the way Pay-Out events were organized came from Bauchi, Ebonyi, and FCT, but statistical significance was not tested because some of the assumptions for the sample could not be met.
+
+```{r}
+print(make_plot(
+  "state",
+  "payout.organized",
+  "Figure 13: Description of Pay-Out Events in Pilot States",
+  pos = 'fill'))
+## TODO: use proportion rather than absolute counts
+```
+
+<!--  Alter the source formatting of the following tables with care!
+      For better readability, view them in full screen mode (CNTRL+SHFT+1). -->
+
+Table 3: Strength, Weaknesses, Opportunities, Threat (SWOT) Analysis 
+
+|STRENGTHS                                         | WEAKNESSES                                                                                     |
+|--------------------------------------------------|------------------------------------------------------------------------------------------------|
+|Improved Health Facility attendance: The CCT programme encouraged community women to register and embrace regular antenatal visit (ANC) and Skilled Birth delivery.                                    | Irregular and Inconsistent pay outs: The pay-outs were highly inconsistent and irregular resulting in large crowds during the events which posed a big challenge.                                                                            |
+| Motivator: The CCT programme motivated more women to seek health services and other free medical services provided at SURE-P supported PHCs.                                                          | Non-Payment of Cash Incentives: Another observation was that some of the women interviewed reported not paid their entitlement and some others who had received their first instalment were yet to receive the second instalment.              |
+| Beneficiary retention: The CCT Programme contributed immensely in sustaining beneficiary retention throughout the continuum of care as most beneficiaries fulfilled the 4 co-responsibilities. | State Steering Committees (SSC): The SSC meetings were not sustainable as a result of unavailability of imp rest to fund such meetings.                                                                                                   |
+| Huge Potential: The design of the CCT Programme to support other supply side interventions helped entrench health seeking behaviours within communities.                                       | Security: Adequate security was not provided for the CCT pay-out events and this placed the paying staff at high risk as well as the cash to be disbursed.                                                                                      |
+|                                                  | M & E Framework:  Monitoring of the CCT Pay-out events were limited which delayed relevant programatic interventions.                                                                                                                          |
+
+
+|      OPPORTUNITIES                              |     THREATS                                                                                     |
+|-------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| CCT Awareness: There was massive awareness of the CCT programme within the communities and huge acceptance of the health services provided at the primary health facility.                          | Renovation of PHC facilities: Before the SURE-P intervention, some of the PHCs were not accessible but the availability of accessible PHCs renovated by SURE P MCH gave CCT the required boost.                                             |
+| Availability of Skilled Health work force at the PHCs: The availability of these health workers stimulated the smooth operation of the CCT.                                                          | Unsustainability of the SURE-P MCH Programme: Continuation of the CCT programme largely depends on the SURE-P MCH project.                                                                                                                          |
+| Availability of other supply side incentives such as ‘Mama Kits’, free medicines etc further encouraged women to register for the CCT.                                                               | Unavailability of CCT funds at the PIU: Funds budgeted for CCT pay-outs were largely unavailable from the federal government on schedule. This hampered the funds disbursement plans.                                                                |
+|                                                 | Discontinuation: A sudden discontinuation of the programme will result in thwarting the numerous gains made and reverse the positive trends achieved so far.                                                                                         |
+|                                                 | Distrust for Government: Stoppage of the CCT programme will lead to strong distrust/lack of confidence for government programmes in the future.                                                                                                 |
+
+
+Table 4: KEY CHALLENGES  
+
+|                                                                                                                                                       |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.	Irregular and Inconsistent Pay-Out Events: The CCT pay-out events were highly inconsistent and irregular resulting in large crowds which posed a big challenge for crowd control and management. Owing to the large crowds, women were kept for longer than necessary just to receive their cash support. It was gathered that this problem was as a result of delay in releasing funds to the SURE P MCH Unit.                                  |
+| 2.	Security for Cash Disbursements: Adequate security was not provided for the CCT pay-out events and this compromised the safety of the cash being disbursed and placed paying staff at high risk.                          |
+| 3.	Non-Payment of Cash Incentives: Several of the women interviewed reported not being paid their entitlement and others who received their first instalment were yet to receive their second instalment. It was later confirmed that the SURE-P MCH PIU had recently received funds and was in the process of conducting another round of CCT pay-out events in the states.                       |
+| 4.	State Steering Committees: The SSC meetings were not sustainable as a result of unavailability of imprest to fund such meetings and this impacted negatively on the SSC as it never really carried out its assigned role.  |
+| 5.	Monitoring and Evaluation: Monitoring of the CCT Pay-out events were limited which delayed relevant programmatic interventions.               |
+| 6.	Additional Data Collection: The additional demand generated by the CCT Programme and CCT reporting tools created additional workload for the participating facilities, which had varying levels of capacity to handle the work.                                                                    |
+| 7.	Referrals: Initially the CCT Programme was designed to take care of women who had complications and had to be referred to General Hospitals but this strate gy was marred with a lot of hitches as beneficiaries lamented their frustrations in assessing that level of care.                            |
+
+Table 5: KEY RECOMMENDATIONS  
+
+|                                                                            |
+|----------------------------------------------------------------------------|
+| 1.	CCT Payment Method: A prudent and effective payment method that delivers quick and prompt payments should be considered to check time wastage, avoid fraud, build trust and simplify the process for pregnant and nursing.        |
+| 2.	Regular and Consistent Payment Schedule: There should be a standard guideline for CCT pay-out events. At least, the women should be paid every quarter to shorten the long wait for payments by beneficiaries and restore their confidence in the system. This means that whatever funds earmarked for CCT from inception should be made available to the implementing unit in a timely manner to ensure effective implementation.                                             |
+| 3.	Monitoring and Evaluation: There should be strong monitoring of the CCT Pay-out events to address immediate programmatic gaps during implementation. |
+| 4.	Auditing: Periodic auditing and independent evaluation of the CCT registers will enhance compliance and adherence to the set conditions. It will reduce the chances of fraud and enhance the overall credibility of the pay-out system.  |
+| 5.	Exploring other forms of incentives: As CCT significantly improved demand for health intervention/services in the communities, calls were made for other forms of incentives which could provide long term benefits to beneficiaries e.g. (vocational training/skill acquisition incentives. The CCT Programme should also be weighed with cash-benefit induced pregnancies vis-á-vis other forms of incentives.                                                                  |
+| 6.	Involvement of PHC staff in cash-disbursements: This can be considered as it strongly came out in the recommendations from the field that the use of facility management staff will strengthen the process.                       |
+| 7.	Programme Continuation: All respondents strongly thanked the government for initiating this laudable intervention and at the same time called for its continuation.                                                                |
+
+ 
+## DISCUSSION
+The SURE-P MCH CCT was designed with novel approaches drawn from similar schemes around the world, however its implementation appeared to be more complex than its design [@epiafric]. One key strength of the SURE-P MCH CCT was its design to complement other supply-side interventions, as this helped to deepen health-seeking behaviour as some women, especially in the southern states cited other interventions provided at the facility as motivating factors. Evidence shows that for a demand-side intervention such as CCT to be successful, concurrent supply-side inputs should be available [@hunter].
+
+Focusing on the CCT processes, eighty six percent (86%) of respondents reported that they had no complaints about the programme at enrolment while majority of the women (88.7%) reported finding the process -– from enrolment to pay-out -- to be easy. About 39.8% enrolled women received the full N5,000 cash incentive while 28.1% received only N1,000 with others receiving either N2000, N3000 or N4000. There was a statistically significant variation (p < .001) among CCT Pilot States of the amount received by the beneficiaries; the highest proportion of those that collected N5,000.00 were from FCT (30.4%) while 38.4% of those that collected only N1,000.00, were from Niger State. However, it should be noted that the CCT Pilot Programme started in the FCT several months before other states.
+
+Across all the communities assessed, CCT appeared to be a motivating factor propelling women to attend ANC and skilled birth delivery, especially in the northern parts. For instancee An OIC in Zamfara, when asked if the women would still come for ANC if the CCT were withdrawn said: “It is not possible. They will not come. CCT is a motivating factor that propels the women to come. Our people have not gotten to the knowledge of the important of ANC during pregnancy and any attempt for the government to withdraw this programme at this early stage will be catastrophic. It will reduce to the lowest minimum the number of ANC and immunization attendance and will make women and their husbands not to believe government programmes anymore.”  A WDC Secretary in the same state answered  “No.” and on probing further stated: “ People who do not have any interest in seeking health care at health centres before now, how do you think that if you withdraw what you use to motivate them that they will still come, though they have seen the importance of ANC attendance during and after delivery but yet their knowledge has not gotten to the stage of taking control of their health in that manner you are asking them to do." On the other hand, some women from southern Nigeria submitted that they would still come to access care at the facilities provided other supply side interventions were still available. They rather called for other forms of incentives to be explored as they were of the opinion that memories of the N5,000 cash incentive could not last as long as what they will benefit when they are given proper economic empowerment programmes such as skill acquisition/vocational trainings.  
+
+Despite demonstrating significant impact on the outcomes of interest and  participants' satisfaction, the CCT programme operational processes were marred with numerous challenges including: delay in cash disbursements to qualified beneficiaries owing to delayed replenishment from the federal government; omission of eligible participants names on the pay-roll; irregularities on the pay-roll; and over-crowding of pay-out events leading to long waiting times. Okoli et al. [-@okoli] opined that prompt cash transfers are necessary to build beneficiaries' trust and for the cash to serve its intended purpose of reducing healthcare costs for mothers. Asserting that monitoring the programme uptake and performance in each implementing cluster is essential in order to track and address outcomes which may be the result of operational barriers [@okoli] is  consistent with the findings of this study, which found that a monitoring and evaluation framework was conspicuously lacking for the CCT programme. Also, security for the pay-out events was inadequate and this posed a big risk for the staff who were involved in the CCT pay-out events. This assessment reveals that implementing a CCT programme involves huge administrative and management costs as several staff are usually needed to successfully execute activities at the different levels of the process.   
+
+Local health system structures played a more prominent role in disseminating information on Pay-Out Events [@hunter] with women being mostly informed via the health facility (34.2%), VHW/CHEW (21.1%) and WDC (9.1%). Significantly, the phone calls from SURE-P CCT were prominent sources of information, according to about 12.1% of the respondents. 95% of the respondents said that the information they received was timely.
+
+Most beneficiaries of the CCT Programme reported spending their cash incentives on their babies contrary to the assumption that the cash support serves as an intended counter to costs of healthcare and transportation costs to the PHC facility. This could be further explored in order to quantify the economic benefits of CCT schemes along the lines of income status. It could be deduced that the CCT Programme had an outstanding impact on the community by deepening the use of skilled health services. However, the smooth operation of the CCT programme was hampered by reported irregularities in the pay-out events. The major problem that characterized the CCT pay-out operations was the irregular availability of funds from the federal government.
+
+
+## CONCLUSION
+Findings from this study opined that the CCT pilot scheme motivated positive behavior change towards utilization of MNCH services as affirmed by previous studies (@glassman, @cohen). This was demonstrated by beneficiaries’ utilisation of ante-natal care and facility deliveries and evidenced in their fulfilment of the four set preconditions. Having expressed satisfaction with the CCT operational processes by majority of participants (84%) who found the processes easy, beneficiaries perceived the scheme as a successful government programme that should not be discontinued. However, several challenges inundated the scheme--from timely funds release to the SURE-P MCH PIU from the federal government to operational challenges which marred CCT pay-out events. This paper identified key challenges that marred the operational efficacy and effectiveness of the CCT programme but at the same time provided key recommendations to mitigate such challenges in the future. Future CCT programmes should understudy the SWOT analysis presented in this paper to guide future interventions in Nigeria.
+
+
+## References
