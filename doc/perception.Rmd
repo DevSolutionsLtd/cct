@@ -1,0 +1,482 @@
+---
+title: "A Maternal and Child Health Conditional Cash Transfer pilot programme in Nigeria: Perspectives of Beneficiaries, Health Service Providers and Community members"
+author: ""
+date: ""
+output: word_document
+---
+
+```{r setup, include=FALSE}
+library(kfigr)
+library(knitr)
+library(rprojroot)
+library(tidyverse)
+library(gridExtra)
+library(ggrepel)
+
+opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+thisProj <- has_file('cct.Rproj')
+source(find_root_file('scripts', 'caption_and_crossref.R', criterion = thisProj))
+source(find_root_file('scripts', 'helpers.R', criterion = thisProj))
+```
+
+# Abstract
+## Background
+In a bid to boost demand for maternal, newborn and child health services across the country, the Federal Government of Nigeria (FGN), piloted a conditional cash transfer programme under the Subsidy Reinvestment and Empowerment Programme on Maternal and Child Health (SURE-P MCH) ) in 2012. This demand-side intervention supplemented the SURE-P MCH&apos;s supply-side interventions that made MNCH services freely available at designated facilities. To gain a better understanding into stakeholder&apos;s views about the programme, this study explored experiences and perceptions of beneficiaries, health service providers and community members.
+
+## Methods
+A descriptive cross-sectional retrospective study that used both qualitative and quantitative data methods to illicit responses from beneficiaries. Face-to-face personal interviews were conducted for 314 CCT beneficiaries from June-July 2015. Seventy–two (72) WDC members and 60 service providers (midwives, CHEWs and VHWs) available at the time of visit participated in the focus group discussions (FGDs). Then each Officer-in- charge (OIC) of the 29 health facilities visited interviewed as key informants. Direct quotes from respondents were transcribed from audio recordings and grouped into themes of attitude and practices, CCT operations, CCTs pay out and perceived impact for analysis. Perceptions of beneficiaries&apos;, health service providers and community members on the CCT&apos;s operations, pay-roll processes and pay-out events and overall perception were analyzed.
+
+## Results
+Over 97% of beneficiaries affirmed that the cash incentive was very helpful and almost 70% beneficiaries did not pay for MNCH services at the facility expressing that the free services were the real benefit. Almost all service providers applauded the programme, though with complaints about increased workload. Having overwhelmingly applauded the scheme, community members expressed mixed approvals and disapprovals about some processes involved. Overall, all responses showed strong indication of increased utilization of antenatal care (ANC) and facility delivery services. 
+
+## Conclusion
+Beneficiaries, service providers and community members expressed deep satisfaction about the CCT programme having propelled pregnant women to attend ANC and deliver at health facilities. However, insights into some challenges of the programme have been provided and lessons learned will enrich the design and implementation of future CCT programmes.
+
+_**Key Words**: SURE-P MCH, Conditional Cash Transfer, Perceptions, Beneficiaries, Health Service Providers, Ward Development Committee members, Officer-in-Charge of health facilities_
+
+# Background
+The Federal Government of Nigeria (FGN) through its Subsidy Reinvestment and Empowerment Programme on Maternal and Child Health (SURE-P MCH) In 2012, initiated a pilot Conditional Cash Transfer (CCT) Scheme as a demand-side intervention to help poorer families overcome the economic barriers to access and use of health services in rural communities and ultimately boost access and utilization of maternal, newborn and child health (MNCH) services in designated health facilities. This CCT programme was inspired by the overwhelming evidence of positive outcomes CCT schemes around the world have had and most importantly its capacity to motivate positive behavior change in the areas of health and education. Though the core concept of CCT schemes originated in Latin American countries in response to the macroeconomic crisis of the 1990s, when demand for social services such as education and health declined drastically for poorer households (Vega and Frenz 2015), it has since become widely utilized across continents. Initially, CCT schemes were targeted to increase income and alleviate poverty in the short term as well as break intergenerational cycle of poverty by developing human capital (Parker et. al, 2017, Galiani, 2013) however, current trends show that poverty alleviation achieved with the cash transfers affect lifestyle choices of beneficiaries (Gaardera, et.al , 2015). Consequently, Conditional Cash Transfer (CCT) programmes are being used to stimulate behavior change around social safety nets across many countries of the world since the 1990s, Mexico&apos;s “Progresa” now called Oportunidades (Parker and Todd 2017) and Brazil&apos;s Bolsa Familia Programme (BFP) (Victora et al. 2011, Fernald, 2013).  
+
+A quick review of some notable CCT programmes where cash transfers helped to improve health status showed positive results for outcome indicators. For instance, the Janani Suraksha Yojana (JSY) CCT programme in India multiplied facility deliveries by eleven (11) fold, from 0•74 million in 2005–2006 to 8•43 million in 2008–2009 in just 4 years thus covering nearly a third of the 26 million women who deliver in the country annually and there was also a reduction in perinatal–neonatal mortality (Paul, 2010). Moving on to rural Colombia, the incidence of diarrhoea in children under 24 months was 10.5% lower amongst children from households participating in the Familias en Accion CCT scheme (Paul, 2010). Also, a review of Indonesia&apos;s large-scale CCTs scheme known as Program Keluarga Harapan (PKH) on child vaccination rates shows that difference-in-differences (DID) estimates significantly increases on child vaccination rates for all basic vaccine types by up to 30% in just two years from 2007 to 2009 (Kusuma et.al, 2017). These large scale government led programs used cash incentives based on certain pre-determined conditions to promote positive targeted health behaviours for their targets and have been overwhelmingly reported as effective in achieving desired outcomes (Roelen 2014). Although there are important differences between countries and regions in how CCTs are used, they all share one defining characteristic- they transfer cash while asking beneficiaries to comply with specified conditions in social services, like education and health.
+
+Following these trend of successes around CCTs, the FGN implemented the SURE-P MCH CCT programme from April 2013 to May 2015 to complement supply side interventions of the Subsidy Reinvestment and Empowerment Programme - Maternal and Child Health programme (SURE-P MCH). The SURE-P MCH program hinged upon supply side and demand side interventions to reduce maternal and infant mortality in Nigeria and worked initially in 500 health facilities before expanding to an additional 500, bringing the total number of health facilities covered to 1000 across the 36 States and federal capital territory (FCT)-Abuja. The supply side interventions focused on improving physical access to healthcare services at selected primary health centers (PHCs) through infrastructural upgrades and provision of necessary medical equipment, regular supplies of routine drugs to (MNCH) drugs health facilities and finally, strengthening of health workforce at the primary healthcare level by recruiting and deploying trained midwives and female community health extension workers (CHEWs) to live and work in selected health facilities in rural communities where the need for services were apparently higher. On the other hand, the CCT programme which has an annual budget of over N100,000,000, (USD602,410) was designed to incentivize pregnant  women who met a set of four pre-conditions along the continuum of care, from antenatal through post-natal care with a total of N5000 (approximately USD30) to subsidize for transport to health facility and out of-pocket expenses (Okoli et al. 2014). The Federal Capital Territory (FCT)-Abuja and 8 states namely- Anambra, Bauchi, Bayelsa, Ebonyi, Kaduna, Niger, Ogun, and Zamfara - were purposively selected for the pilot intervention and beneficiaries were mobilized to access available services at designated SURE-P supported Health centres.
+
+Consequently, beneficiaries of the SURE-P MCH CCT programme were pregnant women who qualified for the CCT and received their cash disbursements. Because the CCT programme targeted utilization of health services to improve maternal and child health outcomes, rather than poverty reduction, there were no restrictions of the CCT to women below a defined poverty line hence, all pregnant women who enrolled for the programme in designated primary health centres were eligible to participate (Okoli et al. 2014). Health service providers including midwives, female community health extension workers (CHEWs) and village health workers (VHW) represents another major stakeholder in the SURE-P MCH CCT programme because they were custodians of the programmes within their various health facilities. They were responsible for enrolling pregnant women into the scheme, documenting and following them through until they complete the continuum of MNCH care. 
+
+Beneficiaries, health service providers and host communities of health targeted programmes are usually major stakeholders for such programmes but often times health programmes are designed and implemented without empowering this group of stakeholders with appropriate information about the programme. Evidence have shown that engaging beneficiaries as well as implementers effectively during design and implementation of programmes contributes to the success of the programmes (Yildirim, 2014). However, exploring these stakeholders views and perceptions about the programme further provides policy makers with an opportunity to understand key factors that must be considered for improvement of such programmes. Yet, it is worrisome that many programmes are evaluated without consultations with beneficiaries or implementers of such programmes and this creates a very big gap between real impact and perceived impact of programmes. It also leaves policy makers without a good understanding of what beneficiaries and implementers feel about the programme. Also, there exist a huge deficit in learning from past experiences and in experimenting with alternative ways of implementing CCT programs (de Janvry and Sadoulet, 2005). Therefore, to bridge this knowledge gap, our study explored perceptions of three categories of stakeholders' about the design and implementation SURE-P MCH CCT programmes; direct beneficiaries, service providers and community members so as to provide policy makers with evidence from stakeholders for future programmes. 
+```{r coresp_table, anchor = 'table'}
+tabl1 <- data.frame(
+  `Pre-condition` = c(
+  'Registration for CCT and 1st ANC visit at designated health facility',
+  '2nd, 3rd and 4th ANC visits',
+  'Skilled birth delivery',
+  'Post-natal care/ immunization/family planning advise'
+  ),
+  `Eligibility Criteria` = c(
+  'Each beneficiary must register for the programme and receive first ANC consultation',
+  'Each beneficiary is required to make at least 3 ANC visits during the course of her pregnancy for focused ANC',
+  'Each beneficiary is encouraged to have a facility based delivery under the supervision of a skilled birth attendant (SBA)',
+  'Each beneficiary is encouraged to make post-natal visit to the facility within the first week after delivery. The visit will include a check-up for the baby and mother, baby’s first immunization and family planning advice for the mother'
+  ),
+  `Corresponding Incentive (NGN)` = c(rep(1000, 2), 2000, 1000),
+  `Dollar equivalent (USD)` = c(rep(6, 2), 12, 6)
+  )
+kable(
+  tabl1,
+  col.names = c(
+  'Pre-condition',
+  'Eligibility Criteria',
+  'Corresponding Incentive (NGN)',
+  'Dollar equivalent (USD)'
+  ),
+  caption = 'Table 1: CCT Pre-conditions and corresponding incentives Pre-condition Eligibility Criteria'
+  )
+```
+
+
+
+# Methods
+## Study design and study sites
+This was a descriptive cross-sectional retrospective study that used both qualitative and quantitative data methods to illicit responses from beneficiaries. Face-to-face personal interviews were conducted for pregnant women who directly benefitted from the CCT programme. Focus group discussions (FGDs) were conducted for ward development committees (WDCs) members who represented hos communities and Service providers (midwives, CHEWs and VHWs) in participating health facilities while key informant interviews were conducted for Officers-in-Charge (OICs) of selected health facilities. Study respondents were selected from a sampling frame of 37 participating primary health care (PHC) facilities participating in the CCT pilot programme made up of 10 CCT pilot clusters of 4 Primary Health Care (PHC) facilities in each state excluding FCT-Abuja which had 5 PHC facilities.  However, following security and inaccessibility challenges in some facilities 29 PHC facilities across the Federal Capital Territory (FCT) and all eight (8) CCT Pilot States of Anambra, Bauchi, Bayelsa, Ebonyi, Kaduna, Niger, Ogun, Zamfara participated in the study.
+
+
+## Study participants, sampling and recruitment
+Study participants were pregnant women or nursing mothers who enrolled in the CCT programme within the pilot period. Other participants include ward development committee (WDCs) members of participating communities who represented the views of host communities, service providers (midwives, CHEWs and VHWs) and Officers-in-Charge of benefiting health facilities. A multi-stage sampling technique was used to select 30-33 CCT beneficiaries from each of the 10 CCT clusters using a table of random numbers. The sampling frame comprised of all women enrolled in the programme during the pilot period who had valid telephone contacts and disaggregated by state. A total of 314 CCT beneficiaries were randomly selected to participate and respondents who were unreachable through their telephone contacts were replaced from the same sampling frame by repeating the table of random numbers. Selected participants were contacted using their telephone numbers and interviews scheduled with them at their convenience. For the FGDs, a total of a total of 74 WDC members were purposively selected from each state (6-8 WDC)with a representative sample of male and female available at the time of visit participated in the focus group making. Also a total of 60 service providers (midwives-2, CHEWs-2 and VHWs-2) from each facility who were available as at the time of visit were selected to participate in the focus groups. Then each Officer-in- charge of the 29 health facilities visited were interviewed as key informants bringing the total number of service providers interviewed to 89.
+
+## Data collection tools and process
+The data collection tools were field-tested in one health facility within FCT-Abuja and study data collected between June--July 2015 (period when the CCT scheme had already ended) with recruitment of study Assessors. The Assessors were trained on the data collection instrument and processes as well as techniques for conducting effective focus group discussions. Demographic data on sex, age, religion, ethnic group, marital status, educational status, employment status, number of children and number of pregnancy was collected. A total of 314 personal interviews were conducted for primary beneficiaries and 18 key informant interviews for Officers-in-Charge (OICs). Two focus group discussions (FGDs) were conducted for members of Ward Development Committees (WDCs) and Health Service Providers (Midwives, CHEWs and VHWs) from participating health facilities respectively in each participating community. Three data collection instruments were used to elicit information from respondents as follows: a structured questionnaire of (16) questions for face-to-face personal interviews with CCT primary beneficiaries who were women, a semi-structured questionnaire for key informants who were Officers-in-Charge of PHC facilities and a semi - structured focus group discussion guide for (WDC) members and Service Providers (2-Midwives, 2- CHEWs and 2-VHWs).
+
+## Data management and analysis
+The data collected using the questionnaires were coded along specific themes and entered into a spreadsheet. The data collected was subjected to descriptive (i.e. mean, median and mode) and inferential (i.e. Chi-square and ANOVA) statistical treatment. Bivariate analysis and test of statistical significance were carried out using R* version 3.1.2. Data from key informant interviews and focus group discussions were transcribed from audio recordings and grouped into themes of CCT operations, CCTs pay out and perceived impact for final analysis. Finally, information obtained was summarized and presented in tables, charts, frequencies and direct quotes from respondents.
+
+## Validity and reliability checks
+The data collection instruments used were peer reviewed by colleagues to ensure internal consistency and validity and field tested in a non-participating CCT facilities in FCT-Abuja with all Assessors who participated during the training and findings from the field-testing were incorporated accordingly.
+
+## Ethical considerations 
+The SURE-P MCH management initiated the assessment but with the agreement of the eight participating states while the United Nations Population Fund (UNFPA) in Nigeria supported the assessment. The study protocol was approved by SURE-P MCH as well as the UNFPA team. Study participant were recruited strictly on their voluntary permission through written informed consent. The study information was carefully explained to participants using the participant&apos;s information sheet which preceded the signing of the informed consent forms. Confidentiality of each participant was also maintained during and after data collection as coded responses are held on secure computers only and not disclosed to anyone outside the study team.
+
+# Results
+Findings of this assessment focused on key themes including ANC and SBA utilization attitudes and practices prior to CCT intervention, operational efficacy of the CCT programme, pay-roll processes and pay-out events and overall perception of the impact of the CCT programme by beneficiaries, service providers and community members. Results of this assessment is presented in three sections, where section one provides beneficiaries perspectives, section two provides Service Providers (Midwives, Community Health Extension Workers (CHEWs) and Village Health Workers (VHWs) and Officers-in-Charge (OICs) perspectives and finally, section three provides community members perspectives as represented by ward development committee (WDC) members.
+
+
+## Beneficiaries demographics
+```{r, data_prep}
+df <- readRDS(find_root_file('data', 'surveydata.rds', criterion = thisProj))
+ylab <- "No. of beneficiaries"
+```
+
+```{r beneficiaries_state}
+bar.num.beneficiaries <-
+  make_plot('state', set.x = 'Pilot State', coloured = FALSE) +
+  stat_count(aes(label = ..count..), 
+             geom = 'text',
+             position = 'identity',
+             vjust = 1,
+             col = 0xffffff)
+```
+
+Most beneficiaries interviewed were either unemployed (i.e. housewives) or traders (31.5% and 30.5%, respectively), and most of them (75%) had a personal income equal to or less than N10,000 monthly. 
+```{r occupation}
+adj.label <- levels(df$occupation)
+adj.label[5] <- 'Private biz'
+bar.occ.beneficiaries <- 
+  make_plot('occupation', set.x = 'Occupation', set.y = ylab, coloured = FALSE) +
+  scale_x_discrete(label = adj.label)
+```
+ 
+```{r personal_income}
+bar.inc.beneficiaries <- make_plot('personal.income', set.x = "Personal Income per Month (Nigerian Naira)", coloured = FALSE) + scale_x_discrete(labels = c("< 900", "1 - 10K", "11 - 20K", "21 - 30K", "31 - 40K", "41 - 50K", "> 50K"))
+```
+ 
+
+```{r demographics_combines, anchor = 'figure', fig.cap='Beneficiaries Demographics'}
+grid.arrange(bar.num.beneficiaries, bar.occ.beneficiaries, bar.inc.beneficiaries)
+
+```
+
+
+## Section One: Beneficiaries&apos; perspectives
+
+### a.	Attitude and Practices around ANC and SBA utilization prior to CCT intervention;
+Beneficiaries&apos; attitude and practices on the utilization of antenatal care (ANC) attendance and skilled birth delivery (SBD) at the health facility before commencement of the CCT Programme low utilization of antenatal care (ANC) attendance and skilled birth delivery (SBD) at the health facility. Most beneficiaries admitted not delivering their children in health facilities with skilled birth attendance (Figures 4 & 5) with up to 52% using the services of TBAs. Of these, 23.4% each were in Bauchi and Bayelsa State, while 16.2% each were in Ebonyi and Zamfara States; the use of TBAs was lowest in Anambra State (1.5%).  
+
+```{r non-hf_births, anchor = 'figure', fig.cap='Location of Non-Health Facility Deliveries'}
+print(make_plot('outside.delivery', set.x = 'Place delivered', set.y = ylab))
+```
+ 
+ 
+```{r non-hf_births_state, anchor = 'figure', fig.cap='Location of Non-Health Facility Deliveries by State'}
+gg <- make_plot('outside.delivery')
+gg + facet_wrap( ~ state)
+```
+ 
+<br>
+
+b.	 Operational processes of the CCT Programme
+Assessing the effectiveness of the CCT operational processes (how a woman gets to register, qualify and receive her cash support) and responses showed mixed approvals and disapprovals of the processes involved. However, 86% respondents stated that they had no complaints about the programme at enrolment and majority of the women (88.7%) said they found the CCT process to be easy – from enrolment to pay-out.
+
+```{r complaints, anchor = 'figure', fig.cap='Complaints on CCT Enrolment'}
+print(make_plot('complaints', set.x = 'Complaints?', set.y = ylab))
+```
+
+<br>
+
+c.	CCT pay-roll processes and pay-out events
+Beneficiaries generally indicated that the events were orderly and well-organized (65.2%, p<.001), though with some complaints about the CCT Pay-roll process and pay-Out events. Following inconsistency in payment schedule, pay-out events were marred with large crowds of qualified women which resulted to loss of precious time by beneficiaries. Non-payment or under-payment of beneficiaries with no reasons given left the beneficiaries dissatisfied in some locations. 
+
+```{r descr_payout, anchor = 'figure', fig.cap='Description of Pay-Out Events in Pilot States'}
+gg <- make_plot('payout.organized')
+gg + facet_wrap( ~ state)
+```
+
+<br>
+
+d.	Perceived impact of the CCT programme
+
+Payment for PHC services: 69.9% of respondents reported not paying for PHC services, while the other 30.1% did. Most commonly, payment was made for routine ANC medicines (61.1% of respondents – Fig. 29). There was a statistically significant relationship between Pilot State and payment for services (p<.001) with highest occurrences in Anambra (32.6%), Niger (28.3%), Ebonyi (12%) and FCT (10.9%).
+
+```{r pay_for_service, anchor = 'figure', fig.cap='Payment for PHC Services'}
+print(make_plot('pay.for.services', set.x = 'Paid for PHC services', set.y = ylab))
+```
+
+<br>
+```{r pay_for_service_state, anchor = 'figure', fig.cap='Payment for PHC Services by State'}
+gg <- make_plot('pay.for.services')
+gg + facet_wrap( ~ state)
+```
+
+<br>
+```{r husbands, anchor = 'figure', fig.cap='How Husbands Feel About CCT Programme'}
+print(make_plot('husband.feels', set.x = 'How Husband Feels', set.y = ylab))
+```
+ 
+ <br>
+```{r cash_helped, anchor = 'figure', fig.cap='How the cash incentive helped beneficiaries'}
+print(make_plot('help.how', set.x = 'How Cash Helped', set.y = ylab))
+```
+ 
+<br>
+
+Level of Satisfaction with the Programme: 90.3% of the respondents said that their husbands were satisfied with the CCT Programme and 97.9% of them affirmed that the cash incentive was very helpful to them – the greater majority of these (59.2%) said that it had really assisted their families financially.
+
+
+## Section Two: Health service providers perspectives
+A total of 89 service providers including Midwives, CHEWs, VHWs and OICs were interviewed from 29 facilities using focus group discussions and key informant interviews.
+
+### a.	ANC and SBA utilization attitudes and practices prior to CCT intervention
+ Service providers perceived that beneficiaries did not optimally utilize antenatal care (ANC) and health facility deliveries before commencement of the CCT Programme. Majority of the providers informed that prior to introduction of the CCT programme, utilization of health facilities for delivery services was abysmally low but has shown markedly increase since the CCT intervention. They also indicated that transportation costs presented a barrier to use the PHC by pregnant women as well as cultural norms and beliefs within the communities some of which portray facility delivery as a sign of weakness by the woman, however, the CCT helped women to use the clinic for ANC and skilled birth delivery. Interestingly, all responses showed strong indication of positive behaviour change towards the utilization of ANC and SBD services since commencement of the CCT Programme.
+
+#### States' illustrative quotes  
+##### Anambra 
+	An OIC said, “In the past, we hardly ever had clients to attend to but now the patronage is very high and the turnout of the pregnant women in the community is impressive.”
+##### Bayelsa 
+	A Village health worker said, “Before this CCT programme commenced, people were not always willing to come to the facility because they will say, transportation difficulty and you know this area people are not so rich so they will say maybe they don&apos;t have money to come and afford the drugs, even registration too so they prefer staying at home to take delivery by traditional birth attendants (TBAs), and you know the impact of those things, the effect of those things, so as CCT came they were so happy for the stipend that was given to them to help them pay transport, and after completing the four ANC, delivery and after immunization they receive payment. And they were very happy because registration was free, drugs are free, delivery is free, even post-natal, they are so happy, they embraced it and they were coming, coming out happy for the programme.”
+##### FCT-Abuja,
+	An OIC said, “Before SURE-P, ANC attendance was poor, after SURE-P came, ANC and skilled birth delivery has increased dramatically. We use to have less than 10 with maximum 15 registrations but now we have up to 60 new ANC registrations. Especially the Gbagyis that don&apos;t come for skilled birth delivery have started coming out in their numbers.”
+
+A Midwife said, “ANC was low before SURE-P as women were not coming out but after the CCT, the work load increased as up to 100-150 come out for ANC.”
+
+Another Midwife said, “Nothing was happening at the PHC as not more than 5 deliveries are made in a month but with the coming of CCT up to 80 deliveries are recorded in one month.”
+
+### b.	 Operational processes of the CCT Programme
+Service providers perceived the CCT operational processes (how a woman gets to register, qualify and receive her cash support) not to be so easy owing to extra workload the influx of pregnant women for new ANC registrations created especially around data entry and processes. However, while majority of service providers showed great satisfaction with the CCT programme, some of them complained about the increased workload the programme brought along and others complained about the inability of beneficiaries to access referral services which was planned at the outset of the programme. The providers who reported not receiving any additional incentive for the additional work admitted to still be doing their jobs effectively even though tedious.
+
+#### States' illustrative quotes
+##### Anambra 
+	An OIC said, “The women are very thankful to the government. Initially they were very skeptical but when they received the cash they were happy. We did not have any problems with the logistics of operating the programme in this area”
+
+##### Bauchi
+A Midwife said, “The whole process of the programme is not an easy task because it was very hectic for us to keep accurate records of data for all the beneficiaries with the little staff strength we had in the PHC and also there was no additional incentive given to us to motivate us.”
+
+##### Bayelsa 
+	An OIC said, “In terms of difficulty, there was no much big deal, I cannot say it is a big load. It was not a problem because the community village healthcare workers (VHWs) we had, helped us to do mobilization, they use to go home visiting, so they pass the information to all the pregnant mothers in the communities. So there is no time that people do not come, they do come, register then go back. Then time of delivery. There was no big load.”
+
+##### Ebonyi
+An OIC said, “The CCT Operations are going on well, but the main issue that is lacking is the area of referral. We were told that patients who are referred would be treated in the General Hospital for free but that has never been fulfilled.  The beneficiaries expect to receive this benefit and there is a need for this to be clarified or rectified.”
+
+##### FCT-Abuja,
+	An OIC said, “The entire process was simple and straight forward except for the few personnel that was available to manage the huge data but that also improved with time.”
+
+### c.	CCT pay-roll processes and pay-out events
+Service providers had mixed feelings about the CCT pay-out processes, while they expressed satisfaction over the cash incentives, they were however, dissatisfied with the irregularities that marred the pay-roll processes and pay-out events. They also lamented the large crowds experienced during such events which made the process unbearable for many women. They also implied that the inconsistencies in the payment schedule put them in bad light before their clients as most clients attributed the inconsistencies to be the fault of the service providers. Also of concern was the non-payment or under-payment of beneficiaries with no reasons given which left some beneficiaries dissatisfied with the scheme in some locations. Finally, they appealed for better communication from SURE-P MCH CCT personnel particularly when sudden changes occur in the program to avoid leaving them in the dark. 
+#### States' illustrative quotes
+##### Anambra 
+	An OIC said, “There were no problems with the CCT pay-outs per se, but some of the women were not paid, despite the fact that they had fulfilled on the conditionality. There were reasons given to them and they were promised that they would be paid eventually.” There should also be better communication from the headquarters so that if there is a change in the programme, we will know what to tell the women and how to address it at our level.” 
+
+##### Bauchi
+An OIC said, “The last time there was payment here (May), there were problems. The beneficiaries clearly pointed out that there was deterioration in the pay-out system – some were short-paid and some were not paid at all.”
+
+A Midwife said, “Fraud was suspected because most of the women were not paid what they were entitled to get without a cogent reason. There is also overcrowding during the pay-out event as it is not well organized. It was very rowdy and at the end most of the women went home devastated for spending the whole day without receiving their incentive.”
+
+##### Bayelsa 
+	A CHEW said, “Problem and challenges as in going from house to house to go and inform them that they want to pay, going from house to house to look for them. When we see those women that are qualified we now take these numbers to the village health workers, we go to their various homes and their villages, like Akaibiri, Kparatoro, Umade, and other places, LNG and other sides , then we go there to go and inform them, and they don&apos;t give us transport to go and do that one. There are sometimes some of them have travelled or gone for transfer or their husband is not here. Some of them we can&apos;t get them again unless we call them on phone to inform them. Some have changed their phone numbers. So if we can pay into their account, that could have been better, but they said nobody can collect for anybody.”
+
+##### Ebonyi
+An OIC said, “The payment should be made directly to the patients accounts, where possible. Also, the CCT staff who were conducting the Pay-Outs should leave a copy of their documentation with the OIC of the health facility. We were told that we would be given copies, but when the staff came they said they were not instructed to give us a copy.”
+
+A Midwife said, “Many of the women do not have mobile phone numbers, so there is a need to find a better way of communicating with these women, because some of the beneficiaries come from distant locations. We have tried using the churches to contact them, but a more reliable system has to be developed 
+
+##### FCT-Abuja,
+	A midwife said, “SURE-P is inconsistent with payment schedules as there were no regular intervals for payments therefore most times they have large number of women to attend to.”
+
+##### Kaduna
+A Midwife said, “Those people when they come sometimes we have problem with them. Some women would stay from morning till evening till 6-7pm they would not get their money. If they promise they would come back, they would not.”
+
+A Midwife said, “I don&apos;t really understand the payments. Since I was moved here they have paid them only once. We are only spectators. They came with a list, pasted it and some women complained that they left with the card previously. When they came for the next payment and the women did not have their cards they were not paid. Some were paid complete.”
+
+##### Zamfara
+A Midwife said, “The record keeping by the officers are good. Where we have issues is in the payment of the cash incentive to the beneficiaries. The money does not come as at when due. It is only two times that the beneficiaries has been paid since the inception of CCT at this facility” CCT is not doing well in terms of payment of cash incentives to the beneficiaries which has brought some doubt in the mind of the beneficiaries of the effectiveness of the programme.”  
+
+### d.	Perceived impact of the CCT programme
+Majority of the service providers perceived that the CCT programme has been most impactful as they applauded the programme for helping boost demand for MNCH services in their facilities and ultimately change in health seeking behaviours for their clients. They believed the programme has improved the health status of their clients, including markedly reducing maternal & infant death. They rather suggested that the programme should be scaled up to other neighboring communities. They requested that pay-out events should be improved including strengthening communication between programme personnel and those at the PHCs.
+
+#### States' illustrative quotes
+##### Anambra 
+	An OIC said, “Our health center is open 24 hours, and since the advent of the SURE-P, we have had a high turnout of clients much more than in the past.”
+
+A Midwife said, “The community are patronizing the health center a lot, both children and adults. They are praising us for our work and we always have patients.”
+
+A CHEW said, “The programme needs to be scaled up to other health facilities, if not to all but at least to some that are far away from here. Some beneficiaries are travelling from far places to participate in the programme. Also, some of the beneficiaries are really gaining from this incentive – I know of a woman who used the 5,000 naira (USD30) to start a new business that she is still doing now.”
+
+A Village health worker said, “The incentive is very useful to these women. I can tell you that with this incentive, the women turn themselves into community mobilizers. The potential for this programme is huge.”
+
+##### Bayelsa 
+	An OIC said, “CCT is only in four facilities, like in Yenagoa LGA we have it in only four facilities, so my suggestion is that they should expand it to other facilities, we have only this one here. By the time you get to another CCT facility you are going to pass so many communities, like 10 or 20 before you get to that place, so even if you want to refer somebody to a CCT facility they will complain about the transportation, because for you to pay N1000 (USD6) as transport to access a CCT facility. They will rather prefer staying at home. So Government should try so they will involve other facilities, make them CCT centers.”  
+	
+Another OIC said, “About the community, initially, when these things were not found here, they cannot even make their transport. So when this programme came, they were very happy. Right now even as they want to remove this programme, some are even crying, even today when I asked some people, “are you one of the beneficiaries?”, they said, “No my turn has not come, do they want to cancel it?”, I replied, “No”. So the women are not happy, they want it to continue, they love it. During Antenatal days and other days, the place is usually full. This place is scanty today because of the rain and transport, hence the nurses here get tired every day, sometimes 40, 50 persons here. Sometimes they stay till even six o&apos;clock before you see them finish. They are happy they love it, they love the programme”.
+
+A third OIC said, “There is improvement, because the women are very happy because of the CCT programme. They use to come to register themselves, when time of delivery they come to deliver at the health center because it is more or less, if they go outside to deliver, they will pay more money more than coming to this place and the benefit they get from this place, they will not have.”
+
+##### Ebonyi
+An OIC said, “The CCT is very good. Because of the CCT, the people of the community began to use the immunization services and there have been zero infant deaths here. The incentive really helps the women and we hope that the programme will continue. However, there is a need for the SURE-P MCH to extend training to all health center staff, particularly in the operation of the CCT, so that everyone is on the same page – they should not only focus on the SURE-P staff, because the health work is a team work and everyone should be trained together.”
+
+Another OIC said, “Our problem here is that of light and the community cherishes the coming of the SURE-P and now we have up to 40 deliveries within the PHC. We used to record maternal deaths in the community, but since SURE-P came to this community, we have not had a single maternal or infant death for up to 3 years!”
+
+A Midwife said, “The community is very happy with services being rendered now through the SURE-P CCT and they are expressing fears that it may not be sustained.
+
+##### FCT-Abuja
+	An OIC said, “The programme has helped change behaviours in a lot of ways especially the Fulani now come out. People that used to deliver at home now come for ANC and delivery. ANC has increased to 80.”
+
+##### Kaduna
+An OIC said, “We are staying in the village so some women see N5000 (USD30) as N50,000 (USD300) so it is really helping them. The money is not small, how I wish you would witness when the women are paid this money. You would think it&apos;s a festival! This money is great and they cannot forget it.”
+
+A Midwife said, “Because they have been educated properly, we tell them the dangers of not attending ANC, and a lot of issues come up like HIV. During clinics we capture them and give them drugs, so they are more aware. Even though the incentive drew them, health education has caused great improvement in their behaviour”.
+
+A CHEW said, “With women in rural areas it is not easy to achieve focused ANC. They don&apos;t see the need to come to the facility until they have complications. Before SURE-P came attendance was low but now more women attend, even from other communities. Some women are saying even the free delivery alone is okay for them. There has been a very serious change.”
+
+##### Niger
+A Midwife said, “The CCT- programme served as a motivator among the women to seek more knowledge of the health facility services and other free medical services provided by SURE-P. ANC is largely practiced by the women mainly due to the SURE-P free drugs and the CCT-support.”
+
+##### Zamfara
+An OIC said, “I am afraid, the culture here does not appreciate a woman delivering at the health facility. They see it that the woman has problem and it is a shame to the family of the woman. It is this CCT that motivated them to come knowing full well that there is incentive (mama kit and the cash incentive) attached and everyone will like to get her own.” 
+ 
+Another OIC said, &quot;This is the only programme I have seen in the government sector that worked like magic. Before the introduction of SURE-P CCT programme, the turnout for ANC in this place was too low.&quot; He said &quot;the impact of SURE-P CCT in the progress of ANC turnout cannot be overemphasized. It has improved the turnout of women for ANC in the clinic.&quot;
+
+
+## Section Three: Community members perspectives
+A total of 75 WDC members participated in the focus group discussions as representative of host communities. 
+
+### a.	ANC and SBA utilization attitudes and practices prior to CCT intervention
+The community members noted that owing to socio-cultural norms they hardly patronized the health facilities for ANC and skilled birth services but with the coming of CCT and the cash incentive, it attracted many pregnant women to the facilities and the community&apos;s patronage for the health facilities increased. 
+
+#### States	Illustrative quotes
+##### Bauchi
+	A Community Chief said, “The community holds strongly to norms and traditional superstition and belief that going to hospitals for reproductive issues are obsolete. They believe that since the process of birth is all about blessings then nothing can go wrong except it is not completely blessed. Now, the CCT financial incentive has caused considerable change in attitude of the community to attend the clinic for proper management.”
+
+##### FCT-Abuja,
+	A WDC Chairman said, “Before CCT, women were not coming for ANC by themselves but changes were noticed with the coming of SURE-P. When the CCT started, the numbers multiplied, the news went round the community and more and more women came to the facility to register.”
+
+##### Zamfara
+A WDC member said, “Culturally we are not so enlightened or educated to know that importance of ANC, not until CCT came and our people see it as a help from the government that motivated them to come.”
+
+### b.	Operational processes of the CCT Programme
+Community members perceived CCT operational processes (how a woman gets to register, qualify and receive her cash support) to have been smooth except for the disappointment of the inability of the pregnant women referred to the general hospital to access the services freely.  
+
+#### States	Illustrative quotes
+##### Anambra
+	A WDC Chairman said, “We make sure that the health workers do the work of sensitizing the community. We have not heard of any problems in the operation. Instead, we heard of how they were sanctioned at one time because they were dodging their duties. That is very good, and it showed that the government was keeping an eye on the operations in the health centre. In short, we are impressed.”
+
+A WDC member said, “We promised the women that if they fulfil the CCT conditionality and have complications, they would be treated for free in a General Hospital. That never happened, and it turned out to be a major disappointment to the women. We think this need to be properly addressed, because it made us to look like we are not telling them the truth.”
+
+#### Kaduna
+A WDC member said, “To me I feel those that can read and write find it very easy. For others whatever you tell them, as long as they see this money, they are okay.”
+
+
+### c.	CCT pay-roll processes and pay-out events
+Community members generally expressed mixed feelings of satisfaction and dissatisfaction over the pay-out events owing to some hitches that beneficiaries experienced during the events. Some complained of not being paid what was due to them and others lamented the long waiting times women experienced to receive their cash incentives. They requested that pay-out events should be improved to reduce the stress women have to go during the events.
+
+#### States	Illustrative quotes
+##### Anambra
+	A WDC member said, “The Pay-Out days are actually a very big occasion in the community. In fact, vendors come here to conduct business, so it is even helping the local economy.”
+
+Another WDC member said, “The women are benefiting from the free services that are being rendered, how much more that they are being paid! There are no complaints as far as we know and we have not heard of any.”
+
+A WDC member said, “We did not hear any complaints of anyone being cheated or denied their incentive. There was no instance of deductions being made. This is good and unprecedented.”
+
+##### Bayelsa
+	A WDC Secretary said, “In terms of the money, it was a bit small to us but we thank God all things being equal, without that money we have been giving birth like that. When this little stipend was given, they were happy, when they got home, they always complained about the payment, that the payment was not okay, even though it was a bit small, it is better than something that one naira is not coming out of it, so they appreciate it, even we members of the WDC we equally appreciate it. We thank Mr. President for a job well done and we want this job to progress because the way things are going, if these things just put off, people will have too much challenges.”
+
+##### Bauchi
+A WDC member said, “It was complained that 70% of the women that participated in the programme did not receive the cash incentive and since the last pay-out carried out last year, no other payment has been made. It looks like a game to them as those that were paid did not get all the incentives as promised so it was seen that what belonged to them has been hijacked by unknown persons.”
+ 
+##### FCT-Abuja
+A WDC member said, “The process of payment is so harsh. Women and WDC members are kept till 9.00pm and it causes a lot of problems. Sometimes no light and they&apos;ll still remain.”
+
+##### Niger
+A WDC member said, “Most of our women were not paid again after 1st and 2nd visit payments. The villagers accused and challenged the staff of the health centre of being the people that are holding their money.”
+
+
+### d.	Perceived impact of the CCT programme
+Overall, the communities were highly appreciative to the government as they expressed so much happiness for being chosen to be part of the pilot programme and want the programme sustained. They believed that every aspect of the operations of the health centre has been affected positively, the programme has improved the health status of their communities, including markedly reducing maternal & infant death. They rather suggested that the programme should be scaled up to other neighboring communities. They requested that pay-out events should be improved including strengthening communication between programme personnel and those at the PHCs. The cash incentive proved very helpful to them and their families and most importantly, the free services are the real benefit.
+
+#### States	Illustrative quotes
+##### Anambra
+	A WDC member said, “The acclaim of this programme amongst members of the community is such that they should not try to stop it. They are helping the poor. The people are responding. On behalf of the community, we thank the Government.”
+
+Another WDC member said, “The positive influence of this programme actually goes beyond the cash being given to the women. Every aspect of the operations of the health centre has been affected positively. There is a need for strong supervision to ensure that the good work and investment made here does not go down the drain. Also, remuneration should be considered for WDC members, as we are also working hard to ensure the success of the programme. We are making many contributions to this work and it is not bad for this to be rewarded, no matter how little.”
+
+A third WDC member said,
+“The community members are very happy, not just those who are pregnant, but even those who are coming for regular treatment. There is a positive transformation in the way the health centre is being run and the way services are being rendered.”
+
+A fourth WDC member said, “The attendance of the women to the health facility has more than doubled. Their response is very dramatic.”
+
+A fifth WDC member said, “The health workers are much more proactive and really involved with the community. They are active in informing the women on the need and benefit of using healthcare services.”
+
+A sixth member said, “The community is responding positively to the efforts of the health workers, and we, the WDC, are also actively involved in mobilizing them. The results are evident in this community.”
+
+##### Bayelsa
+	A WDC Chairman said, “I hope I can say something on this, the CCT programme has brought in life into the people at least through the pregnant women and not only the pregnant women even the husbands, the men too, because if your wife can now come here register, deliver here without paying one kobo and still that woman will get some cash for delivery as well, it is a relief to the men too. So what I say here is let this programme continue because if this programme fails so many people will be stranded or discouraged, because some brought their wives here even to pay the delivery fee if it were outside, some people don&apos;t even have, and the federal government has done this to support every family at least if it is not your child it is your wife, if not, maybe your sister and so on and so forth. So what I will keep saying is, let the federal Government try to retain this programme, if possible they can upgrade to be a ministry, whereby the whole Nigerians will benefit from this particular ministry  or programme. So that is very important to the incoming government too. So that tomorrow they themselves can speak of how they are touching the masses with this particular system. So that is what I want to say, thank you very much.”
+
+A WDC Secretary said,
+“Yeah, they are really attending in many of our facilities. It is in progress, we just have to thank God for bringing this thing to us, because it has definitely relieved our people from going far to the general hospital where they are taking treatment. So the job is impressive.”
+
+##### Bauchi
+A WDC member said, “CCT is a very good programme and it was very thoughtful of the government to bring such programme to our community because our PHC is as good as dead before the inception of this programme but with the inception of CCT the PHC was revived as we now have large flow of clients accessing services.”
+
+Another WDC member said, “It was really helpful to those that benefited from it because a lot of testimonies was received from them on how the incentive assisted them in taking care of some family needs while the rest that didn&apos;t receive look forward to get theirs so as to enjoy like their fellow women.”
+
+##### Kaduna
+A WDC Chairman, “Women are now coming for antenatal. If you come on their clinic day you would see many women here so they are coming. Our clinic was the site for the CCT flag up so there has been increase in number of patients; our only problem is space to expand. Honestly speaking as the SURE-P program is free nobody is going outside to deliver, unless it is at night”
+
+A WDC member said, “For some women, they do not care about the money as long as delivery is free. Even my wife was the first person to collect that money in this community in 2013. Well it is only to help them. The free drugs and delivery even helps them more than the money. The medicines are most important. They awareness is now there but let us have this health program continue.”
+
+##### Niger
+A WDC member said, “It is a nice programme as it has limited maternal and child death amongst our women. It has helped our people. It could be deduced that the programme had an outstanding impact on the community by deepening the use of skilled health services.”
+
+Another WDC member said, “Due to availability of trained staff, our women believe it&apos;s better to come to the PHC health and there is a strong awareness on the PHC services among the community members.”
+
+##### Zamfara
+A WDC Chairman said, “The programme really helped the community to appreciate the need to come to the health facility for ANC and some other medical needs “Do you know that even our men are coming to the health facility hoping that one day the incentive will reach them” Without mincing words, this programme has helped our community a lot to improve our health status as a community.”
+
+# Discussion and Conclusion
+CCT programmes have been justified across continents on the grounds that demand-side subsidies are necessary to address inequities in access to health and social services for the poor (Largade et. al, 2009). However, this demand-side intervention has been proven in different settings to work best with a complementary supply-side interventions (de Janvry and Sadoulet, 2005) and our findings further validates this assertion. Across stakeholders assessed, there was strong emphasis that the combination of the CCT scheme with supply-side interventions led to the success of the programme. A WDC member in Kaduna state said, “for some women, they do not care about the money as long as delivery is free. Even my wife was the first person to collect that money in this community in 2013. Well it is only to help them. The free drugs and delivery even helps them more than the money. The medicines are most important.” In examining perspectives of beneficiaries, service providers and community members for the SURE-P MCH CCT programme, the three stakeholders built a consensus that before the CCT programme commenced, utilization of antenatal care (ANC) and health facility deliveries was abysmally low at their various facilities but the CCT programme led to an upsurge in the demand and utilization of MNCH services in designated facilities. This corroborates assertions that incentives was a useful strategy to promote positive health-seeking behavior among women in rural (Bolanle et. al, 2014) and in this regard, the CCT programme overwhelmingly met its major aim to boost demand for MNCH services. Having widely recognized Conditional cash transfer (CCT) programmes as a motivator for positive behavior change for health and education outcomes (author), in the same manner our assessment found the CCT scheme as a motivating factor that propelled women to attend ANC and deliver at the health facilities, especially in the Nigeria&apos;s northern regions. A Midwife said, “The CCT- programme served as a motivator among the women to seek more knowledge of the health facility services and other free medical services provided by SURE-P. ANC is largely practiced by the women mainly due to the SURE-P free drugs and the CCT-support.” Another Midwife said, that even though the incentive drew them, health education has caused great improvement in their behaviour and that the community began to use the immunization services”. On the other hand, some women from Nigeria&apos;s southern regions admitted that they would still come to access care at the facilities provided other supply side interventions are still available. They rather called for other forms of incentives to be explored as they were of the opinion that memories of the N5,000 (USD30)cash incentive could not last as long as benefits of proper economic empowerment programmes such as skill acquisition/vocational trainings. 
+
+Majority of beneficiaries perceived the CCT operational processes to be easy from enrolment to pay-out events even though most complaints were around the pay-out events however, some service providers expressed dissatisfaction over some aspects of the operational processes as they lamented the extra workload managing data and contacting beneficiaries for pay-out events. For instance, A Midwife said, “Many of the women do not have mobile phone numbers, so there is a need to find a better way of communicating with these women, because some of the beneficiaries come from distant locations. We have tried using the churches to contact them, but a more reliable system has to be developed. An OIC said, “sometimes some of them have travelled or gone for transfer or their husband is not here. Some of them we can&apos;t get them again unless we call them on phone to inform them. Some have changed their phone numbers. So if we can pay into their account that could have been better. The payment should be made directly to the patients accounts, where possible. For future CCT programmes potentials of information, communication technologies (ICTs) should be leveraged for beneficiary notification about pay-out events and electronic payment into beneficiary&apos;s bank account to avoid these kind of bottlenecks. Meanwhile, all stakeholders perceived the pay-out to have been hampered by irregularity and inconsistencies. For instance, A WDC member said, “The process of payment is so harsh. Women and WDC members are kept till 9.00pm and it causes a lot of problems. Sometimes no light and they&apos;ll still remain.”  Future CCT pay-outs should be regular and void of inconveniences to avoid distrust from beneficiaries, service providers and community members.  
+
+When we explored how beneficiaries spent the cash they received, most beneficiaries of the CCT programme reported spending their cash incentives on their babies contrary to the assumption that the cash support serves as an intended counter to costs of healthcare and transportation costs to the PHC facility (Okoli. et, al) however, overall beneficiaries acknowledged that the cash support assisted their families. Subsequently, this could be further explored to quantify the economic benefits of CCT schemes along the lines of income status. It could be deduced that the CCT Programme had an outstanding impact on the community by stimulating a widespread use of the health facilities for ANC and skilled birth services. e.g A Midwife said, “The CCT- programme served as a motivator among the women to seek more knowledge of the health facility services and other free medical services provided by SURE-P. ANC is largely practiced by the women mainly due to the SURE-P free drugs and the CCT-support.” However, beneficiaries sometimes blamed the health facility staff for the pay-out inconsistencies. This issue should be closely considered in the future to mitigate any risks these assumptions may pose for the health service providers.  
+Beneficiaries, service providers and community members all perceived the programme to have been largely impactful. A Community Chief said, “The CCT financial incentive has caused considerable change in attitude of the community to attend the clinic for proper management.” and an OIC in Zamfara, when asked if women would still come for ANC if the CCT were withdrawn said: “It is not possible. They will not come. CCT is a motivating factor that propels the women to come. A WDC Secretary in the same state answered “No.” and on probing further stated: “People who do not have any interest in seeking health care at health centres before now, how do you think that if you withdraw what you use to motivate them that they will still come, though they have seen the importance of ANC attendance during and after delivery but yet their knowledge has not gotten to the stage of taking control of their health in that manner you are asking them to do." 
+Lessons learned from the perceptions of all three stakeholders presented in this paper will provide close the knowledge gap about how beneficiaries perceived a CCT programme and will enrich the design and implementation of future CCT programmes.
+
+# References
+RICCIO, J. et.al (2010) “Towards reduced poverty across generations: early findings from New York City’s Conditional Cash Transfer Program”, Available at: http://www.mdrc.org/publications/549/full.pdf [Accessed on July 5th, 2011]
+
+Rawlings, L. B., & Rubio, G. M. (2005). Evaluating the impact of conditional cash transfer programs: Lessons from Latin America. World Bank Research Observer, Vol. 20, pp. 29–55. 
+
+Development of a costed business model for scale up, Annals of Global Health. 81(1), pp.193-194. 
+Mookherji, S. and Meck, K., (2015). Evaluations of complex global health initiatives: evidence on the need for case-based research. Annals of Global Health. 81(1), p.194. 
+
+Richard F, Witter S, de Brouwere V: Innovative approaches to reducing financial barriers to obstetric care in low-income countries. Am J Public Health 2010, 100(10):1845–1852.
+
+Galiani  S, McEwan P, (2013), ‘The heterogeneous impact of conditional cash transfers’, Journal of Public Economics Vol, 103, pp. 85–96
+
+SALMAN, K. K (2013), ‘Impact Evaluation of Conditional Cash Transfer (CCT) Programme on Girl-Child, School Enrolment, Attendance and Completion in Kano State, Nigeria, Proposal Submitted to AGRODEP
+
+Yildirim, J, Ozdemir S and Sezgin F (2014), ‘A Qualitative Evaluation of a Conditional Cash Transfer Program in Turkey: The Beneficiaries’ and Key Informants’ Perspectives’, Journal of Social Service Research, 40:62–79, 2014
+
+Holmes, R., Samson,  M.,  Magoronga W, Akinrimisi B and Morgan, J (2011), ‘The potential for cash transfers in Nigeria’ Project Briefing No 60
+
+
+Paul V, K (2010), ‘India: conditional cash transfers for in-facility deliveries’ www.thelancet.com Vol 375, pp. 1943-1944
+
+Gaardera, M. M, Glassmanb, A. and Toddc, J. E.  (2010), ‘Conditional cash transfers and health: unpacking the causal chain’, Journal of Development Effectiveness Vol. 2(1), pp. 6–50
+
+Fernald, L.C., 2013. Promise, and risks, of conditional cash transfer programmes. Lancet, www.thelancet.com Vol 382(9886), pp.7-9.
+
+New Evidence on the Impact of Large-scale Conditional Cash Transfers on Child Vaccination Rates: The Case of a Clustered-Randomized Trial in Indonesia, World Development Vol. 98, pp. 497–505, 
+
+Lena Lavinas, (2015) Anti-Poverty Schemes instead of Social Protection, 7 Contemp. Readings L. & Soc. Just. 112 
+
+Anand Krishnan1*, Ritvik Amarchand1, Peter Byass2, Chandrakant Pandav1 and Nawi Ng2
+ “No one says ‘No’ to money” – a mixed methods approach for evaluating conditional cash transfer schemes to improve girl children’s status in Haryana, India
+
+Jessica Taaffe, Nejma Cheikh & David Wilson (2016) The use of cash transfers
+for HIV prevention — are we there yet?, African Journal of AIDS Research, 15:1, 17-25, DOI:
+10.2989/16085906.2015.1135296
+
+Carleigh B Krubiner,1 Maria W Merritt1,2 Which strings attached: ethical considerations for
+selecting appropriate conditionalities in conditional cash transfer programmes
+
+
+Fatima Baba-Ari1,2, Ejemai Amaize Eboreime3,4*, Mazeda Hossain5, Conditional Cash Transfers for Maternal Health Interventions: Factors Influencing Uptake in North-Central Nigeria
+
+Norbert Schady a,⁎, José Rosero b Are cash transfers made to women spent like other sources of income?☆
+
+
+Bolanle C Oyebola, Fatima Muhammad, Allen Otunomeruke, Abare Galadima (2014), “Effect of performance-based incentives for traditional birth attendants on access to maternal and newborn health-care facilities in Gombe State, Nigeria: a pilot study”
+
+by Olabanji Akinola Rethinking the design and implementation of Nigeria’s COPE Conditional Cash Transfer Programme by Olabanji Akinola, University of Guelph
+
+LUIS F. VE´ LEZ DePelchin Children’s Cen, The Role of Health Systems and Policy in Producing Behavior and Social Change to Enhance Child Survival and Development in Low- and Middle-Income Countries: An Examination
+of the Evidence 
+
+Owusu-Addo E, Renzaho AM,N, Mahal AS and Smith, BJ (2016), The impact of cash transfers on social determinants of health and health inequalities in Sub-Saharan Africa: a systematic review protocol’ Systematic ReviewsVol.(5)11, pp.1-13
+
+Gaardera, M. M, Glassmanb, A. and Toddc, J. E.  (2010),‘Conditional cash transfers and health: unpacking the causal chain’, Journal of Development EffectivenessVol. 2(1), pp. 6–50
+
+Kusuma, D., H Thabrany, B Hidayat, M. Mcconnell, P. Berman, and J. Cohen. 2017. “New Evidence on the Impact of Large-Scale Conditional Cash Transfers on Child Vaccination Rates: The Case of a Clustered-Randomized Trial in Indonesia.” World Development 98: 497–505.
+Kusuma, D., Cohen, J., Mcconnell, M and Berman P, (2016) ‘Can cash transfers improve determinants of maternal mortality? Evidence from the household and community programs in Indonesia’, Social Science & Medicine Vol 163, pp. 10-20
+
+
+Lagarde M, Haines A, Palmer N. The impact of conditional cash transfers on health outcomes and use of health services in low and middle income countries 
+
+de Janvry A and Sadoulet, E, (2005), ‘Conditional cash transfer programs for child human capital development: Lessons derived from experience in Mexico and Brazil, Paper for presentation at the GRADE 25th anniversary Conference, “Investigación, Politicas y Desarrollo”, Lima, November 15-17, 2005

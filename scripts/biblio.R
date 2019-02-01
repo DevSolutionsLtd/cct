@@ -4,7 +4,7 @@
 
 cct.bib <- c(
   bibentry(
-    bibtype = 'article',
+    bibtype = 'Article',
     title = 'Conditional Cash Transfers: The Case of Progresa/Oportunidades',
     author = c(
       person(c('S.', 'W.'), 'Parker', role = 'aut'),
@@ -17,7 +17,7 @@ cct.bib <- c(
     key = 'parker'
   ),
   bibentry(
-    bibtype = 'article',
+    bibtype = 'Article',
     author = c(
       person(c('C.', 'G.'), 'Victora', role = 'aut'),
       person(c('E.', 'M.'), 'Aquino', role = 'ctb'),
@@ -34,7 +34,7 @@ cct.bib <- c(
     key = 'victora'
   ),
   bibentry(
-    bibtype = 'article',
+    bibtype = 'Article',
     author = c(
       person('D.', 'Kusuma', role = 'aut'),
       person(family = 'Thabrany', given = 'H', role = 'aut'),
@@ -299,15 +299,197 @@ cct.bib <- c(
     url = 'http://www.worldbank.org/en/programs/sief-trust-fund/brief/nigeria-subsidy-reinvestment-and-empowerment-programme-sure-p',
     note = 'Accessed 5 May 2018',
     key = 'worldbank'
+  ),
+  bibentry(
+    bibtype = 'TechReport',
+    author = person('Federal Government of Nigeria', role = 'aut'),
+    year = '2017',
+    title = 'Multiple Indicator Cluster Survey, 2016-2017',
+    institution = 'FGN',
+    url = 'https://www.unicef.org/nigeria/NG_publications_mics_201617feb2018.pdf',
+    key = 'MICS2017',
+    note = 'Accessed 20 June 2018'
+  ),
+  bibentry(
+    bibtype = 'TechReport',
+    author = c(
+      person('National Population Commission, Nigeria', role = 'aut'),
+      person('ICF International, Rockville, MD', role = 'aut')
+    ),
+    institution = 'NPC, Abuja',
+    year = '2014',
+    title = 'Nigeria Demographic and Health Survey 2013. Abuja',
+    url = 'https://dhsprogram.com/publications/publication-fr293-dhs-final-reports.cfm',
+    key = 'NPC_ICF',
+    note = 'Accessed 01 June 2018'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = c(
+      person('J', 'Yildirim', role = 'aut'),
+      person('S.', 'Ozdemir', role = 'aut'),
+      person('F', 'Sezgin', role = 'aut')
+    ),
+    title = "A Qualitative Evaluation of a Conditional Cash Transfer Program in Turkey: The Beneficiaries' and Key Informants' Perspectives",
+    year = '2014',
+    volume = '40',
+    pages = '62-79',
+    journal = 'Journal of Social Service Research',
+    key = 'yildirim'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = c(
+      person(c('L', 'B'), 'Rawlings', role = 'aut'),
+      person(c('G', 'M'), 'Rubio', role = 'aut')
+    ),
+    title = 'Evaluating the impact of conditional cash transfer programs: Lessons from Latin America',
+    journal = 'World Bank Research Observer',
+    year = '2005',
+    volume = '20',
+    pages = '29-55',
+    key = 'rawlings'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = person(c('V', 'K'), 'Paul', role = 'aut'),
+    title = 'India: conditional cash transfers for in-facility deliveries',
+    journal = 'Lancet',
+    year = '2010',
+    volume = '375',
+    pages = '1943-1944',
+    key = 'paul'
+  ),
+  bibentry(
+    bibtype = 'Misc',
+    author = c(
+      person('J', 'Riccio', role = 'aut'),
+      person('N', 'Dechausay', role = 'aut'),
+      person('D', 'Greenberg', role = 'aut'),
+      person('C', 'Miller', role = 'aut'),
+      person('Z', 'Rucks', role = 'aut'),
+      person('N', 'Verma', role = 'aut')
+    ),
+    title = "Towards reduced poverty across generations: early findings from New York City's Conditional Cash Transfer Program",
+    year = '2010',
+    url = 'http://www.mdrc.org/publications/549/full.pdf',
+    note = 'Accessed 05 July 2011',
+    key = 'riccio'
+  ),
+  bibentry(
+    bibtype = 'Misc',
+    author = c(
+      person('R', 'Holmes', role = 'aut'),
+      person('M', 'Samson', role = 'aut'),
+      person('W', 'Magoronga', role = 'aut'),
+      person('B', 'Akinrimisi', role = 'aut'),
+      person('J', 'Morgan', role = 'aut')
+    ),
+    title = 'The potential for cash transfers in Nigeria',
+    note = 'Project Briefing No. 60',
+    year = '2011',
+    key = 'holmes'
+  ),
+  bibentry(
+    bibtype = 'Misc',
+    author = person(c('K', 'K'), 'Salman', role = 'aut'),
+    title = 'Impact Evaluation of Conditional Cash Transfer (CCT) Programme on Girl-Child, School Enrolment, Attendance and Completion in Kano State, Nigeria: Proposal Submitted to AGRODEP',
+    url = 'http://www.agrodep.org/sites/default/files/annualmeeting/Seed_Salman_KK_final.pdf',
+    note = 'Accessed on 01 June 2018',
+    year = '2013',
+    key = 'salman'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = c(
+      person('S', 'Cecchini', role = 'aut'),
+      person(c('F', 'V'), 'Soares', role = 'aut')
+    ),
+    title = 'Conditional cash transfers and health in Latin America',
+    journal = 'Lancet',
+    year = '2015',
+    volume = '385',
+    pages = 'e32-e34',
+    key = 'cecchini'
+  ),
+  bibentry(
+    bibtype = 'Misc',
+    author = person(family = 'Vanguard [Editorial]', role = 'aut'),
+    title = 'FG pays N5000 to 400,000 poor Nigerians under cash transfer programme in 20 states',
+    year = '2018',
+    url = 'https://www.vanguardngr.com/2018/05/fg-pays-n5000-400000-poor-nigerians-cash-transfer-proframme-20-states/',
+    note = 'Retrieved 30 July 2018',
+    key = 'vanguard'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = c(
+      person(c('M', 'M'), 'Gaardera', role = 'aut'),
+      person('A', 'Glassman', role = 'aut'),
+      person(c('J', 'E'), 'Todd', role = 'aut')
+    ),
+    title = 'Conditional cash transfers and health: unpacking the causal chain',
+    journal = 'Journal of Development Effectiveness',
+    year = '2010',
+    volume = '2(1)',
+    pages = '6-50',
+    key = 'gaardera'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = c(
+      person('S', 'Devereux', role = 'aut'),
+      person('E', 'Masset', role = 'aut'),
+      person(family = 'Sabates-Wheeler', role = 'aut'),
+      person('R', 'Samson', role = 'aut'),
+      person(c('A', 'M'), 'Rivas', role = 'aut'),
+      person('D', 'Lintelo', role = 'aut')
+    ),
+    title = 'The targeting effectiveness of social transfers',
+    journal = 'Journal of Development Effectiveness',
+    year = '2017',
+    volume = '9(2)',
+    pages = '162-211',
+    key = 'devereux'
+  ),
+  bibentry(
+    bibtype = 'Article',
+    author = c(
+      person(c('M', 'E'), 'Kruk', role = 'aut'),
+      person('S', 'Kujawski', role = 'aut'),
+      person('G', 'Mbaruku', role = 'aut'),
+      person('K', 'Ramsey', role = 'aut'),
+      person('W', 'Moyo', role = 'aut'),
+      person('D', 'Freedman', role = 'aut')
+    ),
+    title = 'Disrespectful and abusive treatment during facility delivery in Tanzania: a facility and community survey',
+    journal = 'Health Policy and Planning',
+    year = '2014',
+    pages = '1-8',
+    key = 'kruk'
+  ),
+  bibentry(
+    bibtype = 'Misc',
+    author = c(
+      person('M', 'McNabb', role = 'aut'),
+      person('M', 'Chukwu', role = 'aut'),
+      person('M', 'Salami', role = 'aut'),
+      person('O', 'Ojo', role = 'aut'),
+      person('F', 'Jega', role = 'aut')
+    ),
+    title = 'Assessing the feasibility and value of a pilot project using mobile applications and mobile money to enhance a maternal health conditional cash transfer (CCT) program in Nigeria leading to the',
+    year = '2015',
+    key = 'mcnabb'
   )
 )
 
 ## Create the .bib file
-bib.file <- 'cct.bib'
+bib.file <- file.path(here::here(), 'doc', 'cct.bib')
 if (!file.create(bib.file))
   stop('Creation of .bib file failed')
 cat(sQuote(bib.file), 'was successfully created\n')
 capture.output(print(cct.bib, style = 'Bibtex'), file = bib.file)
 choice <- menu(c('Yes', 'No'),
                title = 'Do you want to view it?')
-if (choice == 1) file.show(bib.file) else cat('Nothing more to be done.\n')
+if (choice == 1)
+  file.show(bib.file) 
