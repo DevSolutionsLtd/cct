@@ -34,7 +34,7 @@ make_plot <- function(x,
         geom_bar() +
         theme(axis.text.x = element_text())
     }
-      ggObj 
+    ggObj 
   }
   else {
     ggObj +

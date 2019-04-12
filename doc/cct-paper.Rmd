@@ -54,7 +54,7 @@ knit_hooks$set(output = function(x, options) {
 })
 ```
 
-```{r load, message=FALSE}
+```{r load, message=FALSE, warning=FALSE}
 invisible(
   lapply(c('kfigr', 'magrittr', 'rprojroot', 'tidyverse'),
          library,
@@ -78,7 +78,7 @@ This paper provides insights into the design and implementation of the Subsidy R
 This study combined a desk review of SURE-P MCH CCT operational documents and a retrospective descriptive and cross-sectional survey of 314 primary beneficiaries of the CCT scheme from 29 SURE-P MCH CCT designated health facilities between June – July 2015. The desk review understudied the programme implementation manual (PIM), and several CCT monthly reports and articles obtained from the project management unit (PIU) while a structured questionnaire of (16) questions was used for face-to-face interviews with (30-33) CCT primary beneficiaries drawn from each of eight (8) participating states of Anambra, Bauchi, Bayelsa, Ebonyi, Kaduna, Niger, Ogun, and Zamfara and the Federal Capital Territory (FCT)-Abuja. Findings were analyzed and reported using R statistical package (version 3.1.2). Subsequently a SWOT analysis was conducted to highlight strengths, weaknesses, opportunities and threats of the CCT scheme. Hence, key challenges were identified and recommendations provided for future CCT design and implementation in Nigeria and other settings. 
 
 **Results**  
-The SWOT analysis indicated that the CCT programme had a robust design with huge potentials of operational effectiveness if implemented as designed, however, the programme was inundated with several implementation challenges. Though 65% of beneficiaries perceived CCT pay-out events as orderly and well-organized (p < 0.001), yet, the events were marred with inconsistencies and irregularities resulting in large crowds and increased waiting time for beneficiaries. Only 40% of beneficiaries received the complete N5,000 (USD30) cash incentive, 28% received only N1,000 (USD6) while others received either N2000 (USD12), N3000 (USD18) or N4000 (USD24).  
+The SWOT analysis indicated that the CCT programme had a robust design with a huge potential for operational effectiveness if diligently implemented. However, the programme was faced with several implementation challenges. For instance, though 65% of beneficiaries perceived CCT pay-out events to be orderly and well-organized, in some of the pilot states the events were marred with inconsistencies resulting in large crowds and increased waiting time for beneficiaries. Similarly, only 40% of beneficiaries received the complete N5,000 (USD30) cash incentive while  28% received only N1,000 (USD6) while others received either N2000 (USD12), N3000 (USD18) or N4000 (USD24).  
 
 **Conclusion**  
 The CCT pilot programme had a robust design following a proof of concept phase that preceded the roll-out of the pilot programme. However, its implementation was marred with several challenges ranging from untimely release of funds, limited monitoring and evaluation and other operational challenges. Future CCT programmes should understudy the SWOT analysis presented in this paper to improve design and implementation of CCT programmes.
@@ -144,7 +144,7 @@ table(consolidated$state) %>%
   kable(col.names = c('State', 'No. of Enrollees'))
 ```
 
-A total of 314 CCT primary beneficiaries were selected using a two-stage sampling technique and 30-33 respondents were allotted to each state and FCT-Abuja. The decision on the sample size for each pilot state was made on the strength of the assumptions of the central limit theorem and resources available for the assessment.  
+A total of 314 CCT primary beneficiaries were selected using a two-stage sampling technique and 30-33 respondents were allotted to each state and FCT-Abuja. The decision on the sample size for each pilot state was made on the strength of the assumption of normality for a minimum sample size of 30 per pilot state, given the limited resources available for the assessment.  
 
 ```{r fig_map, anchor = 'figure', fig.cap='Map of CCT Pilot States depicting the sites surveyed'}
 include_graphics('fig/pilot-sites_map.png')
@@ -156,7 +156,7 @@ Data were collected between June-July 2015 (period when the CCT scheme had alrea
 
 **Data management and analysis**  
 <!-- TODO: Something to be fixed in this paragraph -->
-Each of the answered questionnaires was coded and entered into a spreadsheet. The data collected was subjected to descriptive (i.e. mean, median and mode) and inferential (i.e. Chi-square and ANOVA) statistical treatment. Bivariate analysis and test of statistical significance were carried out using R version 3.1.2. Data from respondents were grouped into themes for analysis thus; CCT operations, CCTs pay- roll processes, CCTs pay- out events and perceived perception by beneficiaries. Finally, information obtained was summarized and presented in tables, charts and frequencies.
+Each of the answered questionnaires was coded and entered into a spreadsheet. The data collected was subjected to descriptive (i.e. mean, median and mode) and inferential (i.e. Chi-square) statistical treatment. Bivariate analysis and test of statistical significance were carried out using R version 3.1.2.[@rcore] Data from respondents were grouped into themes for analysis thus; CCT operations, CCTs pay- roll processes, CCTs pay- out events and perceived perception by beneficiaries. Finally, information obtained was summarized and presented in tables, charts and frequencies.
 
 **Validity and reliability checks**  
 The data collection instruments were put through phased validity which involved pre-testing and field testing of the tools. First the tools were pre-tested and peer-reviewed by internal and external colleagues to ensure internal consistency and validity. Then, a field testing of the questionnaires and survey methodology was done in one of the non-participating CCT facilities in FCT-Abuja with all Assessors who were part of the assessment training. Findings from the field-testing were incorporated and amended accordingly.
@@ -170,13 +170,20 @@ df <- readRDS(find_root_file("data", "surveydata.rds", criterion = thisProj))
 31.5% of beneficiaries were unemployed (i.e. housewives), 30.5% traders and 75% had a personal income equal to or less than N10,000 monthly.
 
 **CCT Operations**  
-About 22.6% of beneficiaries reported that they heard about the CCT programme from family and friends, while 43% heard from village health workers (VHWs), 18.2% heard from community health extension workers (CHEWs) and 11.1% heard from ward development committee (WDC) members as shown in `r figr('plot_cct-info', TRUE, type = 'Figure')`. The data was statistically significantly across the various pilot states (p < 0.001).
+About 22.6% of beneficiaries reported that they heard about the CCT programme from family and friends, while 43% heard from village health workers (VHWs), 18.2% heard from community health extension workers (CHEWs) and 11.1% heard from ward development committee (WDC) members as shown in `r figr('plot_cct-info', TRUE, type = 'Figure')`. The goodness-of-fit test was statistically significantly across the eight (8) pilot states ($\chi^2$ = `r round(chisq.test(table(df$cct.info))$statistic, 2)`, p < 0.001).
+```{r set string variables, include=FALSE}
+numBeneficiaryAxisTitle <- "No. of respondents"
+```
 
 ```{r plot_cct-info, anchor = 'figure', fig.cap='Where Beneficiaries first heard about CCT'}
-gg <- make_plot("cct.info")
+gg <- make_plot("cct.info", set.y = numBeneficiaryAxisTitle)
 print(gg)
+```
 
-gg + facet_wrap( ~ state)
+<br>
+```{r, plot_cct-info by state, anchor = 'figure', fig.cap='Where Beneficiaries first heard about CCT (by Pilot State)'}
+gg + facet_wrap( ~ state) +
+  labs(ylab(numBeneficiaryAxisTitle))
 ```
 
 <br>
@@ -195,15 +202,12 @@ print(make_plot(
   title = "Figure 4: Adequate information on Co-responsibilities given"))
 ```
 
-
-
 ```{r, eval=FALSE}
 print(make_plot(
   "same.record",
   title = "Figure 5: Record on CCT card same as that in Register"))
 ```
   
-
 Eighty six percent (86%) of respondents stated that they had no complaints about the programme at enrolment while majority of the women (88.7%) reported finding the CCT process to be easy – from enrolment to pay-out.
 
 ```{r complaints, eval=FALSE}
@@ -211,7 +215,6 @@ print(make_plot(
   "complaints",
   title = "Figure 6: Complaints on CCT Enrolment"))
 ``` 
-  
 
 **CCT Pay-roll and payout events**
 
@@ -236,10 +239,12 @@ kable(heard, col.names = c('Source', 'No.', '%'))
 ```
 
 ```{r, eval=FALSE}
+numBeneficiaryAxisTitle <- "No. of respondents"
 print(make_plot(
   "state",
   "payout.onschedule",
-  "Figure 8: Were Pay-Outs According To Schedule?"))
+  "Figure 8: Were Pay-Outs According To Schedule?",
+  set.y = numBeneficiaryAxisTitle))
 ```
 
 ```{r table_payout-on-schedule, anchor = 'table', tab.cap = 'Were Pay-Outs According To Schedule?'}
@@ -257,14 +262,16 @@ Most of the women said that they were paid the complete N5,000 incentive (39.8%)
 ```{r, eval=FALSE}
 print(make_plot(
   "amount.received",
-  title = "Figure 9: Amount Paid To Beneficiaries"))
+  title = "Figure 9: Amount Paid To Beneficiaries (NGN)",
+  set.y = numBeneficiaryAxisTitle))
 ```
   
 There was a statistically significant variation (p < 0.001) amongst the CCT Pilot States of the amount received by the beneficiaries; the highest proportion of those that collected N5,000.00 were from FCT (30.4%) while 38.4% of those that collected only N1,000.00, were from Niger State. It should be noted that the CCT Pilot Programme started in the FCT several months before the other States.
 
 ```{r numpayments, eval=FALSE}
 print(make_plot("no.of.payments",
-          title = "Figure 10: No. of payments"))
+          title = "Figure 10: No. of payments",
+          set.y = numBeneficiaryAxisTitle))
 ## TODO: This would make more sense for the "once" and perhaps the "twice" categories. We would want to know whether lump sum payment was common.
 ```
 
@@ -272,25 +279,25 @@ There was also a statistically significant variation (p < 0.001) amongst Pilot S
 
 ```{r, eval=FALSE}
 gg <- make_plot("amount.received",
-          title = "Figure 11: Amount Received Across the Pilot States")
+          title = "Figure 11: Amount Received Across Pilot States")
 
-gg + facet_wrap( ~ state)
-## TODO: Chart as multifaceted plot
+gg + facet_wrap( ~ state) +
+  labs(ylab(numBeneficiaryAxisTitle))
 ```
 
  
 Out of the CCT enrollees that were not given any money, about an equal number were or were not given any reasons why they were not paid (50.7% and 49.3%, respectively). When analysed on a State-by-State basis, 90%, 75% and 53% of the respondents in Bauchi, FCT and Kaduna Pilot States, respectively, said they were not given any reasons for non-payment. In contrast, beneficiaries from Zamfara, Ebonyi and Anambra Pilot States scored CCT high (83.3%, 80% and 60%) in conveying to them any reason for their non-payment (`r figr('fig_reasons-given-for-non-payment', TRUE, type = 'Figure')`).
 
 ```{r fig_reasons-given-for-non-payment, anchor = 'figure', fig.cap='Beneficiaries Given Reasons for Non-Payment'}
-gg <- make_plot("reason.given")
+gg <- make_plot("reason.given",
+                title = "Reasons Given in the event of Non-Payment")
 
-gg + facet_wrap( ~ state)
-
-## TODO: Disaggregate according to pilot state
+gg + facet_wrap( ~ state) +
+  labs(ylab(numBeneficiaryAxisTitle))
 ```
 
   
-Pay-out events were largely perceived by the beneficiaries to be orderly and well-organised (65.2%, p<.001); most complaints about the way Pay-Out events were organized came from Bauchi, Ebonyi, and FCT, but statistical significance was not tested because some of the assumptions for the sample could not be met (`r figr('payout_event_description', TRUE, type = 'Table')`).
+Pay-out events were largely perceived by the beneficiaries to be orderly and well-organised; most complaints about the way Pay-Out events were organized came from Bauchi, Ebonyi, and FCT. (`r figr('payout_event_description', TRUE, type = 'Table')`).
 
 ```{r, eval=FALSE}
 print(make_plot(
@@ -298,7 +305,6 @@ print(make_plot(
   "payout.organized",
   "Figure 13: Description of Pay-Out Events in Pilot States",
   pos = 'fill'))
-## TODO: use proportion rather than absolute counts
 ```
 
 ```{r payout_event_description, anchor = 'table', tab.cap = 'Description of Pay-Out Events in Pilot States', results='asis'}
@@ -313,8 +319,11 @@ kable(payOrganised)
 
 
 
-<!--  Alter the source formatting of the following tables with care!
-      For better readability, view them in full screen mode (CNTRL+SHFT+1). -->
+<!--  
+           WARNING!
+Alter the source formatting of the subsequent tables with care!!!
+For better readability, view them in RStudio full screen mode (CNTRL+SHFT+1).
+-->
 
 Table 6: Strength, Weaknesses, Opportunities, Threat (SWOT) Analysis 
 
@@ -380,7 +389,7 @@ Key Recommencations
 This study was limited by the paucity of literature on previous CCTs in Nigeria to support the desk review, though all literature available was considered. Also, the inability to assess more beneficiaries from all 37 facilities following security issues and inaccessibility of some terrain were limiting. However the 29 facilities and 314 beneficiaries assessed still gave a fair assessment of all participating states covered. 
 
 ## CONCLUSION
-Obviously, the major strength of the SURE-P MCH CCT was its design to complement other supply-side interventions, as this helped to deepen health-seeking behavior, as the free services provided at the facility served as a motivating factor. Evidence shows that for a demand-side intervention such as CCT to be successful, concurrent supply-side inputs should be available [@hunter]. Despite demonstrating a robust design of the CCT programme, its operational processes were marred with numerous challenges including: delay in cash disbursements to qualified beneficiaries owing to delayed replenishment from the federal government; omission of eligible participants names from the pay-roll; irregularities on the pay-roll; over-crowding of pay-out events leading to long waiting times and lack of access to referral facilities in case of emergencies or obstetric complications. Also, the CCT pay-outs lacked a clear monitoring framework that would have helped the programme to make necessary process amendments to improve outcome of the pay-out events. This conspicuous lack of (M&E) mechanisms is similar to COPE's implementation which was also inundated with several service delivery challenges that undermined programme delivery and effectiveness [@victora]. Monitoring programme uptake and performance in each implementing cluster is essential to track and address programmatic challenges which may be the result of operational barriers [@okoli]. 
+Obviously, the major strength of the SURE-P MCH CCT was its design to complement other supply-side interventions. This helped to deepen health-seeking behavior, as the free services provided at the facility served as a motivating factor. Evidence shows that for a demand-side intervention such as CCT to be successful, concurrent supply-side inputs should be available [@hunter]. Despite demonstrating a robust design of the CCT programme, its operational processes were marred with numerous challenges including: delay in cash disbursements to qualified beneficiaries owing to delayed replenishment from the federal government; omission of eligible participants names from the pay-roll; irregularities on the pay-roll; over-crowding of pay-out events leading to long waiting times and lack of access to referral facilities in case of emergencies or obstetric complications. Also, the CCT pay-outs lacked a clear monitoring framework that would have helped the programme to make necessary process amendments to improve outcome of the pay-out events. This conspicuous lack of (M&E) mechanisms is similar to COPE's implementation which was also inundated with several service delivery challenges that undermined programme delivery and effectiveness [@victora]. Monitoring programme uptake and performance in each implementing cluster is essential to track and address programmatic challenges which may be the result of operational barriers [@okoli]. 
 
 This study suggests that the CCT pilot scheme motivated positive behavior change towards utilization of MNCH services as affirmed by previous studies [@glassman; @cohen]. However, this paper identified key challenges that marred the operational efficacy and effectiveness of the CCT programme but at the same time provided key recommendations to mitigate such challenges in the future. Future CCT programmes should understudy the SWOT analysis presented in this paper to guide future interventions in Nigeria and beyond.
 

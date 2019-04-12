@@ -480,6 +480,15 @@ cct.bib <- c(
     title = 'Assessing the feasibility and value of a pilot project using mobile applications and mobile money to enhance a maternal health conditional cash transfer (CCT) program in Nigeria leading to the',
     year = '2015',
     key = 'mcnabb'
+  ),
+  bibentry(
+    bibtype = "Manual",
+    author = person("R Core Team"),
+    title = "R: A Language and Environment for Statistical Computing",
+    address = "Vienna, Austria",
+    year = '2015',
+    url = "https://www.R-project.org/",
+    key = "rcore"
   )
 )
 
