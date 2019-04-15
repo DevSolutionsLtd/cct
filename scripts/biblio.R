@@ -2,6 +2,9 @@
 
 # Bibliography for CCT Paper
 
+
+# TODO: Ensure that reference are are numbered in order of appearance
+
 cct.bib <- c(
   bibentry(
     bibtype = 'Article',
@@ -119,7 +122,14 @@ cct.bib <- c(
       person(c('B.', 'E.'), 'Ebenso', role = 'aut'),
       person('B.', 'Uzochukwu', role = 'aut'),
       person('A.', 'Manzano', role = 'aut'),
-      person('et al. (8 more authors)', role = 'ctb')
+      person("E.", "Etiaba", role = "ctb"),
+      person("R", "Huss", role = "ctb"),
+      person("T", "Ensor", role = "ctb"),
+      person("J", "Newell", role = "ctb"),
+      person("O", "Onwujekwe", role = "ctb"),
+      person("N", "Ezuma", role = "ctb"),
+      person("J", "Hicks", role = "ctb"),
+      person("T", "Mirzoev", role = "ctb")
     ),
     title = 'De-constructing a complex programme using a logic map: Realist Evaluation of Maternal and Child Health in Nigeria',
     booktitle = 'The state of the art of realist methodologies',
@@ -185,14 +195,14 @@ cct.bib <- c(
     author = person('EpiAfric', role = 'aut'),
     year = '2015',
     title = 'An Evaluation of the Maternal and Child Health Project of the Subsidy Reinvestment and Empowerment Programme (SURE--‐P MCH) March-May 2015',
-    institution = 'SURE--P MCH',
+    institution = 'SURE-P MCH',
     key = 'epiafric'
   ),
   bibentry(
     bibtype = 'TechReport',
-    author = person('GHMC', role = 'aut'),
+    author = person('Global Health and Medical Consultants Ltd', role = 'aut'),
     year = '2015',
-    title = 'Subsidy Reinvestment and Empowerment Programme on Maternal and Child Health Conditional Cash Transfer (CCT) Pilot Programme Assessment Report, Global Health and Medical Consultants Ltd.',
+    title = 'Subsidy Reinvestment and Empowerment Programme on Maternal and Child Health Conditional Cash Transfer (CCT) Pilot Programme Assessment Report',
     institution = 'UNFPA',
     key = 'ghmc'
   ),
@@ -489,6 +499,15 @@ cct.bib <- c(
     year = '2015',
     url = "https://www.R-project.org/",
     key = "rcore"
+  ),
+  bibentry(
+    bibtype = "Misc",
+    author = person("The World Bank"),
+    title = "The SURE-P Maternal and Child Health Project in Nigeria",
+    url = "http://pubdocs.worldbank.org/en/284981453222884744/Policy-brief-Nigeria-SURE-P-MCH-IE.pdf",
+    year = "2016",
+    note = "Accessed 01.06.2018",
+    key = "worldbank2"
   )
 )
 
